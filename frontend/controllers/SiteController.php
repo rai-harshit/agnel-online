@@ -49,6 +49,9 @@ use frontend\models\UserSearch;
 use yii\db\Command;
 //qCe
 
+use kartik\mpdf\Pdf;
+use mPDF;
+
 
 /**
  * Site controller
@@ -489,6 +492,7 @@ class SiteController extends Controller
                 'dateTime'=>$dT,
                 'orderNo'=>$oNo,
                 'count'=>$count,
+                'grandTotal'=>$gT,
                 'ordered_items'=>$ordered_items
                 ]);
         }
@@ -497,6 +501,30 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('error','You need to be logged in first to perform that action.');
             return $this->redirect('index.php?r=site%2Flogin');
         }    
+    }
+
+
+    public function receiptPDF()
+    {   
+        $file=10;
+        $mpdf=new mPDF();
+        $mpdf->SetMargins(9,9,20);
+        $mpdf->SetTitle("AGNEL-ONLINE");
+        $mpdf->SetSubject("Order Receipt");
+        $mpdf->SetAuthor("G_H0$t");
+        $mpdf->defaultheaderfontsize=10;
+        $mpdf->setHeader('&nbsp;AGNEL-ONLINE {DATE j-m-Y}');
+        $mpdf->setFooter('{PAGENO}');
+        $mpdf->WriteHTML($file);
+        $mpdf->Output("Hello.pdf","I");
+
+    }
+
+
+    public function actionReceipt()
+    {   
+
+        $this->receiptPDF();
     }
 
 

@@ -28,7 +28,8 @@
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
         "picqer/php-barcode-generator": "^0.2.1",
-        "tecnickcom/tcpdf": ">=6.2.0"
+        "kartik-v/yii2-mpdf": "1.0.1"
+
     },
     "config": {
         "process-timeout": 1800

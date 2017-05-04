@@ -114,6 +114,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
               </div>
+              <br/>
+                <div class="nav nav-pills nav-justified" style="padding-right:10px;">
+                  <li class="active" ><a href="index.php?r=site%2Fcart" style=" border-radius:60px"><b>PROCEED TO CART</b></a></li>
+                </div>
 
 
     </div>

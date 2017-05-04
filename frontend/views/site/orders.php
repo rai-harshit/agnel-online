@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][]=$this->title;
 		<center>
 			<div class=row>
 				<div class="col-md-6">
-						<?= "COUNT : ".$itemsCount ?>
+						<?= "PRODUCTS' COUNT : ".$itemsCount ?>
 				</div>
 				<div class="col-md-6">
 						<?= "PAYABLE AMOUNT : "?>&#x20B9;<?=$grandTotal ?>
@@ -86,6 +86,7 @@ $this->params['breadcrumbs'][]=$this->title;
         		Yii::$app->session->setFlash('error','Cart is empty. Add something to the cart and try again.');
         			}
         	else{
+
         		Yii::$app->session->setFlash('error','You have Insufficient Balance.');
         			}
         }
