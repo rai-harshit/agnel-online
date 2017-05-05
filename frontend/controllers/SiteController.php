@@ -49,6 +49,7 @@ use frontend\models\UserSearch;
 use yii\db\Command;
 //qCe
 
+use kartik\mpdf\Pdf;
 use mPDF;
 
 
@@ -503,105 +504,27 @@ class SiteController extends Controller
     }
 
 
-    public function ReceiptPDF()
-    {       
-            $uniqueID=$_GET['uid'];
-            $dateTime=$_GET['dT'];
-            $orderNo=$_GET['oNo'];
-            $count=$_GET['count'];
-            $grandTotal=$_GET['gT'];
-            $ordered_items=$_GET['ordIt'];
-            $barCode=new \Picqer\Barcode\BarcodeGeneratorPNG();
-            $barCodeData=
-            base64_encode($barCode->getBarcode($uniqueID, $barCode::TYPE_CODE_128));
-            $rollNo=Yii::$app->user->identity->roll_no;
+    public function receiptPDF()
+    {   
+        $file=10;
         $mpdf=new mPDF();
-        $mpdf->charset_in='utf-8';
         $mpdf->SetMargins(9,9,20);
-        $mpdf->SetTitle("AGNEL-ONLINE-".$orderNo);
+        $mpdf->SetTitle("AGNEL-ONLINE");
         $mpdf->SetSubject("Order Receipt");
         $mpdf->SetAuthor("G_H0$t");
         $mpdf->defaultheaderfontsize=10;
-        $mpdf->setHeader($rollNo.'&nbsp;&nbsp;AGNEL-ONLINE {DATE j-m-Y}');
+        $mpdf->setHeader('&nbsp;AGNEL-ONLINE {DATE j-m-Y}');
         $mpdf->setFooter('{PAGENO}');
-        $mpdf->WriteHTML("
-                <style type='text/css'>
-                table
-                {
-                    width:100%; 
-                    border:1px solid black;
-                }
-                tr,th,td
-                {
-                    border:1px solid black;
-                    padding:5px;
-                    width:25%;
-                    text-align:center;
-                }
+        $mpdf->WriteHTML($file);
+        $mpdf->Output("Hello.pdf","I");
 
-                </style>
-                <body>
-                    <div class='container'>
-                        <h1 align='center' style='font-family:arial; font-weight:lighter'>Order Receipt</h1>
-
-                        <div>
-                            <img src='../web/images/agnels_logo.jpg' style='margin-left:35%'>
-                        </div>
-                        <div>
-                            <h4 align='center'>INSTRUCTION:</h4>
-                            <p>
-                            You will have to provide the Barcode at the Counter before collecting your order.<br/>
-
-                            </p>
-                            <div class='barcode'>
-                                <img src='data:image/png;base64,.$barCodeData' style='width:40%; margin-left:30%'>
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-                    <p>
-                        If BarCodes aren't your thing, you can also use the following Unique ID for the same purpose :
-                        <h2 align='center' style='font-family:arial; font-weight:light'>
-                            $uniqueID
-                        </h2>
-                    </p>
-                    <br/>
-                    <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Order ID</th>
-                        <th>Ordered Items</th>
-                        <th>Total Amount (INR)</th>
-                    </tr>
-                    <tr>
-                    <td rowspan=$count > $dateTime </td>
-                    <td rowspan=$count > $orderNo  </td>
-                    <td> $ordered_items[0] </td>
-                    <td rowspan=$count >  &#8377; $grandTotal </td>
-                    </tr>");
-            for($i=1;$i<$count;$i++) {
-                $mpdf->WriteHTML("
-                        <tr><td> $ordered_items[$i] </td></tr>
-                        ");   }
-            $mpdf->WriteHTML("        
-                    </table>
-                    <br/><br/>
-                    <h4>General Instructions:</h4>
-                    <ol>
-                        <li>You can use this PDF file in case there is any complications in Order completion.</li>
-                        <li>In case of an issue, you will be required to either submit the hard-copy of this PDF file or email this copy to the Administrator.</li>
-                        <li>In case any fraud is attempted by modifying the details of this file, strict (legal) actions will be taken on the basis of severity of the case.</li>
-                    </ol>
-                </body>
-
-            ");
-        return $mpdf->Output('AGNEL-ONLINE-'.$orderNo.'.pdf',I);
     }
 
 
     public function actionReceipt()
-    {
-        $this->ReceiptPDF();
+    {   
+
+        $this->receiptPDF();
     }
 
 

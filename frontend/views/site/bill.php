@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][]="Order Receipt";
         </center>
 
    	        <div class="col-md-4">
-	        	<center>
+	        <center>
 	        	<img src="<?= yii\helpers\Url::to('@web/images/agnels_logo.png') ?>" align='middle'/>
 	        	</center>
 	        </div>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][]="Order Receipt";
 	        		<td rowspan=$count > $orderNo  </td>
 	        		<td> $ordered_items[0] </td>
 	        		<td rowspan=$count > &#x20B9 $grandTotal </td>
-	        		</tr>";
+	        	</tr>";
         	?>
 	        <?php
 	        		for($i=1;$i<$count;$i++) {
@@ -89,11 +89,12 @@ $this->params['breadcrumbs'][]="Order Receipt";
 	            <li class="active" >
 	            	<a href="
 					    <?php
-				        echo Yii::$app->UrlManager->createUrl(array('site/receipt','uid'=>$uniqueID,'dT'=>$dateTime,'oNo'=>$orderNo,'count'=>$count,'gT'=>$grandTotal,'ordIt'=>$ordered_items));			
+				        echo Yii::$app->UrlManager->createUrl('site/receipt',array('uid'=>$uniqueID));			
 					    ?>">GENERATE PDF
 					</a>
 	            </li>
 	        </div>
+
 
 	</div>
 </div>
