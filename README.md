@@ -14,7 +14,6 @@ Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
 
 DIRECTORY STRUCTURE
 -------------------
@@ -53,3 +52,8 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+INSTRUCTIONS:
+A yii.sql file has been provided within the project. 
+Before trying to access various features of the website, you will be required to first import this file in your Database Management System (ex: MySQL or MariaDB).
+Failing to do so will only throw exceptions.
