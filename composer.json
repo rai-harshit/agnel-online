@@ -28,7 +28,9 @@
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
         "picqer/php-barcode-generator": "^0.2.1",
-        "kartik-v/yii2-mpdf": "1.0.1"
+        "mpdf/mpdf": ">=6.0",
+		"sendgrid/sendgrid": ">=5.5"
+
 
     },
     "config": {

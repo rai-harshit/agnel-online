@@ -3432,122 +3432,105 @@
         ]
     },
     {
-        "name": "kartik-v/yii2-mpdf",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "name": "sendgrid/php-http-client",
+        "version": "3.7.0",
+        "version_normalized": "3.7.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/kartik-v/yii2-mpdf.git",
-            "reference": "17fda1cb084c58fee6014026d35af5faf73316ef"
+            "url": "https://github.com/sendgrid/php-http-client.git",
+            "reference": "bec48e0e2e41331438ba7872805b86c45387178d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-mpdf/zipball/17fda1cb084c58fee6014026d35af5faf73316ef",
-            "reference": "17fda1cb084c58fee6014026d35af5faf73316ef",
+            "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/bec48e0e2e41331438ba7872805b86c45387178d",
+            "reference": "bec48e0e2e41331438ba7872805b86c45387178d",
             "shasum": ""
         },
         "require": {
-            "mpdf/mpdf": "<7.0"
+            "php": ">=5.6"
         },
-        "time": "2017-01-14T11:51:12+00:00",
-        "type": "yii2-extension",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
+        "require-dev": {
+            "phpunit/phpunit": "~4.4",
+            "squizlabs/php_codesniffer": "~2.0"
         },
+        "time": "2017-05-05T06:15:41+00:00",
+        "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "kartik\\mpdf\\": ""
+                "SendGrid\\": "lib/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "BSD 3-Clause"
+            "MIT"
         ],
         "authors": [
             {
-                "name": "Kartik Visweswaran",
-                "email": "kartikv2@gmail.com",
-                "homepage": "http://www.krajee.com/"
+                "name": "Matt Bernier",
+                "email": "dx@sendgrid.com"
+            },
+            {
+                "name": "Elmer Thomas",
+                "email": "elmer@thinkingserious.com"
             }
         ],
-        "description": "A Yii2 wrapper component for the mPDF library which generates PDF files from UTF-8 encoded HTML.",
-        "homepage": "https://github.com/kartik-v/yii2-mpdf",
+        "description": "HTTP REST client, simplified for PHP",
+        "homepage": "http://github.com/sendgrid/php-http-client",
         "keywords": [
-            "component",
-            "extension",
-            "html",
-            "mpdf",
-            "pdf",
-            "utf8",
-            "yii2"
+            "api",
+            "fluent",
+            "http",
+            "rest",
+            "sendgrid"
         ]
     },
     {
-        "name": "tecnickcom/tcpdf",
-        "version": "6.2.2",
-        "version_normalized": "6.2.2.0",
+        "name": "sendgrid/sendgrid",
+        "version": "5.5.0",
+        "version_normalized": "5.5.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "47e8e3e0d1bfc9b1ddf78e9b391d70e3611677fb"
+            "url": "https://github.com/sendgrid/sendgrid-php.git",
+            "reference": "b4c997f865ced8be232f63957b872fffa81f0d79"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/47e8e3e0d1bfc9b1ddf78e9b391d70e3611677fb",
-            "reference": "47e8e3e0d1bfc9b1ddf78e9b391d70e3611677fb",
+            "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/b4c997f865ced8be232f63957b872fffa81f0d79",
+            "reference": "b4c997f865ced8be232f63957b872fffa81f0d79",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.0"
+            "php": ">=5.6",
+            "sendgrid/php-http-client": "~3.7"
         },
-        "time": "2014-12-18T13:26:15+00:00",
+        "replace": {
+            "sendgrid/sendgrid-php": "*"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2017-05-05T06:31:40+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "classmap": [
-                "fonts",
-                "config",
-                "include",
-                "tcpdf.php",
-                "tcpdf_parser.php",
-                "tcpdf_import.php",
-                "tcpdf_barcodes_1d.php",
-                "tcpdf_barcodes_2d.php",
-                "include/tcpdf_colors.php",
-                "include/tcpdf_filters.php",
-                "include/tcpdf_font_data.php",
-                "include/tcpdf_fonts.php",
-                "include/tcpdf_images.php",
-                "include/tcpdf_static.php",
-                "include/barcodes/datamatrix.php",
-                "include/barcodes/pdf417.php",
-                "include/barcodes/qrcode.php"
+            "files": [
+                "lib/SendGrid.php",
+                "lib/helpers/mail/Mail.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPLv3"
+            "MIT"
         ],
-        "authors": [
-            {
-                "name": "Nicola Asuni",
-                "email": "info@tecnick.com",
-                "homepage": "http://nicolaasuni.tecnick.com"
-            }
-        ],
-        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
-        "homepage": "http://www.tcpdf.org/",
+        "description": "This library allows you to quickly and easily send emails through SendGrid using PHP.",
+        "homepage": "http://github.com/sendgrid/sendgrid-php",
         "keywords": [
-            "PDFD32000-2008",
-            "TCPDF",
-            "barcodes",
-            "datamatrix",
-            "pdf",
-            "pdf417",
-            "qrcode"
+            "email",
+            "grid",
+            "send",
+            "sendgrid"
         ]
     },
     {
