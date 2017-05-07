@@ -595,7 +595,9 @@ class SiteController extends Controller
                 </body>
 
             ");
-        return $mpdf->Output('AGNEL-ONLINE-'.$orderNo.'.pdf',I);
+
+               $mpdf->Output('ordersPDF/AGNEL-ONLINE-'.$orderNo.'.pdf','F'); 
+        return $mpdf->Output('AGNEL-ONLINE-'.$orderNo.'.pdf','I');
     }
 
 
