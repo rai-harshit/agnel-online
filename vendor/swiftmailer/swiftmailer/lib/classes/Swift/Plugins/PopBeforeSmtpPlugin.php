@@ -27,8 +27,8 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
     /** Encryption type to use (if any) */
     private $_crypto;
 
-    /** Username to use (if any) */
-    private $_username;
+    /** roll_no to use (if any) */
+    private $_roll_no;
 
     /** Password to use (if any) */
     private $_password;
@@ -63,7 +63,7 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
      * @param int    $port
      * @param string $crypto as "tls" or "ssl"
      *
-     * @return self
+     * @return Swift_Plugins_PopBeforeSmtpPlugin
      */
     public static function newInstance($host, $port = 110, $crypto = null)
     {
@@ -75,7 +75,7 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
      *
      * @param Swift_Plugins_Pop_Pop3Connection $connection
      *
-     * @return $this
+     * @return Swift_Plugins_PopBeforeSmtpPlugin
      */
     public function setConnection(Swift_Plugins_Pop_Pop3Connection $connection)
     {
@@ -99,7 +99,7 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
      *
      * @param int $timeout
      *
-     * @return $this
+     * @return Swift_Plugins_PopBeforeSmtpPlugin
      */
     public function setTimeout($timeout)
     {
@@ -109,15 +109,15 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
     }
 
     /**
-     * Set the username to use when connecting (if needed).
+     * Set the roll_no to use when connecting (if needed).
      *
-     * @param string $username
+     * @param string $roll_no
      *
-     * @return $this
+     * @return Swift_Plugins_PopBeforeSmtpPlugin
      */
-    public function setUsername($username)
+    public function setroll_no($roll_no)
     {
-        $this->_username = $username;
+        $this->_roll_no = $roll_no;
 
         return $this;
     }
@@ -127,7 +127,7 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
      *
      * @param string $password
      *
-     * @return $this
+     * @return Swift_Plugins_PopBeforeSmtpPlugin
      */
     public function setPassword($password)
     {
@@ -163,8 +163,8 @@ class Swift_Plugins_PopBeforeSmtpPlugin implements Swift_Events_TransportChangeL
 
                 $this->_assertOk($greeting);
 
-                if ($this->_username) {
-                    $this->_command(sprintf("USER %s\r\n", $this->_username));
+                if ($this->_roll_no) {
+                    $this->_command(sprintf("USER %s\r\n", $this->_roll_no));
                     $this->_command(sprintf("PASS %s\r\n", $this->_password));
                 }
             }

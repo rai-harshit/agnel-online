@@ -4,7 +4,7 @@ require_once dirname(__DIR__).'/EsmtpTransportTest.php';
 
 interface Swift_Transport_EsmtpHandlerMixin extends Swift_Transport_EsmtpHandler
 {
-    public function setUsername($user);
+    public function setroll_no($user);
 
     public function setPassword($pass);
 }
@@ -446,8 +446,8 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transpor
              ->andReturn('AUTH');
         $ext1->shouldReceive('exposeMixinMethods')
              ->zeroOrMoreTimes()
-             ->andReturn(array('setUsername', 'setPassword'));
-        $ext1->shouldReceive('setUsername')
+             ->andReturn(array('setroll_no', 'setPassword'));
+        $ext1->shouldReceive('setroll_no')
              ->once()
              ->with('mick');
         $ext1->shouldReceive('setPassword')
@@ -459,7 +459,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transpor
         $this->_finishBuffer($buf);
 
         $smtp->setExtensionHandlers(array($ext1, $ext2));
-        $smtp->setUsername('mick');
+        $smtp->setroll_no('mick');
         $smtp->setPassword('pass');
     }
 
@@ -475,8 +475,8 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transpor
              ->andReturn('AUTH');
         $ext1->shouldReceive('exposeMixinMethods')
              ->zeroOrMoreTimes()
-             ->andReturn(array('setUsername', 'setPassword'));
-        $ext1->shouldReceive('setUsername')
+             ->andReturn(array('setroll_no', 'setPassword'));
+        $ext1->shouldReceive('setroll_no')
              ->once()
              ->with('mick')
              ->andReturn(null);
@@ -490,7 +490,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transpor
         $this->_finishBuffer($buf);
 
         $smtp->setExtensionHandlers(array($ext1, $ext2));
-        $ret = $smtp->setUsername('mick');
+        $ret = $smtp->setroll_no('mick');
         $this->assertEquals($smtp, $ret);
         $ret = $smtp->setPassword('pass');
         $this->assertEquals($smtp, $ret);
@@ -508,8 +508,8 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transpor
              ->andReturn('AUTH');
         $ext1->shouldReceive('exposeMixinMethods')
              ->zeroOrMoreTimes()
-             ->andReturn(array('setUsername', 'setPassword'));
-        $ext1->shouldReceive('setUsername')
+             ->andReturn(array('setroll_no', 'setPassword'));
+        $ext1->shouldReceive('setroll_no')
              ->once()
              ->with('mick')
              ->andReturn('x');
@@ -523,7 +523,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transpor
         $this->_finishBuffer($buf);
 
         $smtp->setExtensionHandlers(array($ext1, $ext2));
-        $this->assertEquals('x', $smtp->setUsername('mick'));
+        $this->assertEquals('x', $smtp->setroll_no('mick'));
         $this->assertEquals('x', $smtp->setPassword('pass'));
     }
 }

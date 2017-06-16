@@ -11,7 +11,7 @@
 <form id="login-form" action="/form/example1" method="post">
     <p class="note">Fields with <span class="required">*</span> are required.</p>
     <div class="row">
-        <label for="LoginForm_roll_no" class="required">roll_no <span class="required">*</span></label>   <input name="LoginForm[roll_no]" id="LoginForm_roll_no" type="text" />        <div class="errorMessage" id="LoginForm_roll_no_em_" style="display:none"></div>   </div>
+        <label for="LoginForm_username" class="required">Username <span class="required">*</span></label>   <input name="LoginForm[username]" id="LoginForm_username" type="text" />        <div class="errorMessage" id="LoginForm_username_em_" style="display:none"></div>   </div>
 
     <div class="row">
         <label for="LoginForm_password" class="required">Password <span class="required">*</span></label>       <input name="LoginForm[password]" id="LoginForm_password" type="password" />        <div class="errorMessage" id="LoginForm_password_em_" style="display:none"></div>       <p class="hint">

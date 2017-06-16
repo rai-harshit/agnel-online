@@ -29,18 +29,12 @@
         "codeception/verify": "~0.3.1",
         "picqer/php-barcode-generator": "^0.2.1",
         "mpdf/mpdf": ">=6.0",
-		"sendgrid/sendgrid": ">=5.5"
-
+        "stripe/stripe-php": "=4.9.1",
+        "ruskid/yii2-stripe": "dev-master"
 
     },
     "config": {
         "process-timeout": 1800
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
-        }
     },
     "scripts": {
         "post-install-cmd": "php init --env=Development --overwrite=n"

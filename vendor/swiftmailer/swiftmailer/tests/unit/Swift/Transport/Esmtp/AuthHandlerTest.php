@@ -15,11 +15,11 @@ class Swift_Transport_Esmtp_AuthHandlerTest extends \SwiftMailerTestCase
         $this->assertEquals('AUTH', $auth->getHandledKeyword());
     }
 
-    public function testUsernameCanBeSetAndFetched()
+    public function testroll_noCanBeSetAndFetched()
     {
         $auth = $this->_createHandler(array());
-        $auth->setUsername('jack');
-        $this->assertEquals('jack', $auth->getUsername());
+        $auth->setroll_no('jack');
+        $this->assertEquals('jack', $auth->getroll_no());
     }
 
     public function testPasswordCanBeSetAndFetched()
@@ -40,11 +40,11 @@ class Swift_Transport_Esmtp_AuthHandlerTest extends \SwiftMailerTestCase
     {
         $auth = $this->_createHandler(array());
         $mixins = $auth->exposeMixinMethods();
-        $this->assertTrue(in_array('getUsername', $mixins),
-            '%s: getUsername() should be accessible via mixin'
+        $this->assertTrue(in_array('getroll_no', $mixins),
+            '%s: getroll_no() should be accessible via mixin'
             );
-        $this->assertTrue(in_array('setUsername', $mixins),
-            '%s: setUsername() should be accessible via mixin'
+        $this->assertTrue(in_array('setroll_no', $mixins),
+            '%s: setroll_no() should be accessible via mixin'
             );
         $this->assertTrue(in_array('getPassword', $mixins),
             '%s: getPassword() should be accessible via mixin'
@@ -74,14 +74,14 @@ class Swift_Transport_Esmtp_AuthHandlerTest extends \SwiftMailerTestCase
            ->andReturn(true);
 
         $auth = $this->_createHandler(array($a1, $a2));
-        $auth->setUsername('jack');
+        $auth->setroll_no('jack');
         $auth->setPassword('pass');
 
         $auth->setKeywordParams(array('CRAM-MD5', 'LOGIN'));
         $auth->afterEhlo($this->_agent);
     }
 
-    public function testAuthenticatorsAreNotUsedIfNoUsernameSet()
+    public function testAuthenticatorsAreNotUsedIfNoroll_noSet()
     {
         $a1 = $this->_createMockAuthenticator('PLAIN');
         $a2 = $this->_createMockAuthenticator('LOGIN');
@@ -115,7 +115,7 @@ class Swift_Transport_Esmtp_AuthHandlerTest extends \SwiftMailerTestCase
            ->andReturn(true);
 
         $auth = $this->_createHandler(array($a1, $a2));
-        $auth->setUsername('jack');
+        $auth->setroll_no('jack');
         $auth->setPassword('pass');
 
         $auth->setKeywordParams(array('PLAIN', 'LOGIN'));
@@ -141,7 +141,7 @@ class Swift_Transport_Esmtp_AuthHandlerTest extends \SwiftMailerTestCase
            ->with($this->_agent, 'jack', 'pass');
 
         $auth = $this->_createHandler(array($a1, $a2));
-        $auth->setUsername('jack');
+        $auth->setroll_no('jack');
         $auth->setPassword('pass');
 
         $auth->setKeywordParams(array('PLAIN', 'LOGIN', 'CRAM-MD5'));

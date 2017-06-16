@@ -12,14 +12,27 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<style type="text/css">
+    .col-lg-5{
+    width:100%;
+    background-color:#808ca0;
+    padding:15px;
+    border-radius:10px
+    }
+</style>
+
 <div class="site-signup">
-<div class=container>
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class=container style="padding-right:10px">
+    <div class="heading">
+    <center>
+    <h2><b><?= Html::encode($this->title) ?></b></h2>
+    </center>
+    </div>
+    <br/>
 
-    <p>Please fill out the following fields to signup:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-5" style="width:100%;">
+        <b>
+            <p>Please fill out the following fields to signup:</p>
             <?php Pjax::begin(); ?>
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
@@ -31,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
-
+        </b>
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
@@ -40,6 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php Pjax::end(); ?>
         </div>
     </div>
+    <br/>
 </div>
 </div>
-

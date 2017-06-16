@@ -23,11 +23,11 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
     private $_authenticators = array();
 
     /**
-     * The username for authentication.
+     * The roll_no for authentication.
      *
      * @var string
      */
-    private $_username;
+    private $_roll_no;
 
     /**
      * The password for authentication.
@@ -81,23 +81,23 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
     }
 
     /**
-     * Set the username to authenticate with.
+     * Set the roll_no to authenticate with.
      *
-     * @param string $username
+     * @param string $roll_no
      */
-    public function setUsername($username)
+    public function setroll_no($roll_no)
     {
-        $this->_username = $username;
+        $this->_roll_no = $roll_no;
     }
 
     /**
-     * Get the username to authenticate with.
+     * Get the roll_no to authenticate with.
      *
      * @return string
      */
-    public function getUsername()
+    public function getroll_no()
     {
-        return $this->_username;
+        return $this->_roll_no;
     }
 
     /**
@@ -167,20 +167,20 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
      */
     public function afterEhlo(Swift_Transport_SmtpAgent $agent)
     {
-        if ($this->_username) {
+        if ($this->_roll_no) {
             $count = 0;
             foreach ($this->_getAuthenticatorsForAgent() as $authenticator) {
                 if (in_array(strtolower($authenticator->getAuthKeyword()),
                     array_map('strtolower', $this->_esmtpParams))) {
                     ++$count;
-                    if ($authenticator->authenticate($agent, $this->_username, $this->_password)) {
+                    if ($authenticator->authenticate($agent, $this->_roll_no, $this->_password)) {
                         return;
                     }
                 }
             }
             throw new Swift_TransportException(
-                'Failed to authenticate on SMTP server with username "'.
-                $this->_username.'" using '.$count.' possible authenticators'
+                'Failed to authenticate on SMTP server with roll_no "'.
+                $this->_roll_no.'" using '.$count.' possible authenticators'
                 );
         }
     }
@@ -229,7 +229,7 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
      */
     public function exposeMixinMethods()
     {
-        return array('setUsername', 'getUsername', 'setPassword', 'getPassword', 'setAuthMode', 'getAuthMode');
+        return array('setroll_no', 'getroll_no', 'setPassword', 'getPassword', 'setAuthMode', 'getAuthMode');
     }
 
     /**

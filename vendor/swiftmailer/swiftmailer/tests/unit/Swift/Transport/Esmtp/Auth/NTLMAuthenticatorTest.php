@@ -41,21 +41,21 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticatorTest extends \SwiftMailerTestC
 
     public function testLMv2Generator()
     {
-        $username = 'user';
+        $roll_no = 'user';
         $password = 'SecREt01';
         $domain = 'DOMAIN';
         $challenge = '0123456789abcdef';
         $lmv2 = 'd6e6152ea25d03b7c6ba6629c2d6aaf0ffffff0011223344';
 
         $login = $this->_getAuthenticator();
-        $lmv2Result = $this->_invokePrivateMethod('createLMv2Password', $login, array($password, $username, $domain, $this->hex2bin($challenge), $this->hex2bin('ffffff0011223344')));
+        $lmv2Result = $this->_invokePrivateMethod('createLMv2Password', $login, array($password, $roll_no, $domain, $this->hex2bin($challenge), $this->hex2bin('ffffff0011223344')));
 
         $this->assertEquals($lmv2, bin2hex($lmv2Result), '%s: The keys should be the same cause we use the same values to generate them.');
     }
 
     public function testMessage3v1Generator()
     {
-        $username = 'test';
+        $roll_no = 'test';
         $domain = 'TESTNT';
         $workstation = 'MEMBER';
         $lmResponse = '1879f60127f8a877022132ec221bcbf3ca016a9f76095606';
@@ -63,75 +63,75 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticatorTest extends \SwiftMailerTestC
         $message3T = '4e544c4d5353500003000000180018006000000018001800780000000c000c0040000000080008004c0000000c000c0054000000000000009a0000000102000054004500530054004e00540074006500730074004d0045004d004200450052001879f60127f8a877022132ec221bcbf3ca016a9f76095606e6285df3287c5d194f84df1a94817c7282d09754b6f9e02a';
 
         $login = $this->_getAuthenticator();
-        $message3 = $this->_invokePrivateMethod('createMessage3', $login, array($domain, $username, $workstation, $this->hex2bin($lmResponse), $this->hex2bin($ntlmResponse)));
+        $message3 = $this->_invokePrivateMethod('createMessage3', $login, array($domain, $roll_no, $workstation, $this->hex2bin($lmResponse), $this->hex2bin($ntlmResponse)));
 
         $this->assertEquals($message3T, bin2hex($message3), '%s: We send the same information as the example is created with so this should be the same');
     }
 
     public function testMessage3v2Generator()
     {
-        $username = 'test';
+        $roll_no = 'test';
         $domain = 'TESTNT';
         $workstation = 'MEMBER';
         $lmResponse = 'bf2e015119f6bdb3f6fdb768aa12d478f5ce3d2401c8f6e9';
         $ntlmResponse = 'caa4da8f25d5e840974ed8976d3ada46010100000000000030fa7e3c677bc301f5ce3d2401c8f6e90000000002000c0054004500530054004e00540001000c004d0045004d0042004500520003001e006d0065006d006200650072002e0074006500730074002e0063006f006d000000000000000000';
 
         $login = $this->_getAuthenticator();
-        $message3 = $this->_invokePrivateMethod('createMessage3', $login, array($domain, $username, $workstation, $this->hex2bin($lmResponse), $this->hex2bin($ntlmResponse)));
+        $message3 = $this->_invokePrivateMethod('createMessage3', $login, array($domain, $roll_no, $workstation, $this->hex2bin($lmResponse), $this->hex2bin($ntlmResponse)));
 
         $this->assertEquals($this->_message3, bin2hex($message3), '%s: We send the same information as the example is created with so this should be the same');
     }
 
-    public function testGetDomainAndUsername()
+    public function testGetDomainAndroll_no()
     {
-        $username = "DOMAIN\user";
+        $roll_no = "DOMAIN\user";
 
         $login = $this->_getAuthenticator();
-        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndUsername', $login, array($username));
+        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndroll_no', $login, array($roll_no));
 
         $this->assertEquals('DOMAIN', $domain, '%s: the fetched domain did not match');
         $this->assertEquals('user', $user, '%s: the fetched user did not match');
     }
 
-    public function testGetDomainAndUsernameWithExtension()
+    public function testGetDomainAndroll_noWithExtension()
     {
-        $username = "domain.com\user";
+        $roll_no = "domain.com\user";
 
         $login = $this->_getAuthenticator();
-        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndUsername', $login, array($username));
+        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndroll_no', $login, array($roll_no));
 
         $this->assertEquals('domain.com', $domain, '%s: the fetched domain did not match');
         $this->assertEquals('user', $user, '%s: the fetched user did not match');
     }
 
-    public function testGetDomainAndUsernameWithAtSymbol()
+    public function testGetDomainAndroll_noWithAtSymbol()
     {
-        $username = 'user@DOMAIN';
+        $roll_no = 'user@DOMAIN';
 
         $login = $this->_getAuthenticator();
-        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndUsername', $login, array($username));
+        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndroll_no', $login, array($roll_no));
 
         $this->assertEquals('DOMAIN', $domain, '%s: the fetched domain did not match');
         $this->assertEquals('user', $user, '%s: the fetched user did not match');
     }
 
-    public function testGetDomainAndUsernameWithAtSymbolAndExtension()
+    public function testGetDomainAndroll_noWithAtSymbolAndExtension()
     {
-        $username = 'user@domain.com';
+        $roll_no = 'user@domain.com';
 
         $login = $this->_getAuthenticator();
-        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndUsername', $login, array($username));
+        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndroll_no', $login, array($roll_no));
 
         $this->assertEquals('domain.com', $domain, '%s: the fetched domain did not match');
         $this->assertEquals('user', $user, '%s: the fetched user did not match');
     }
 
-    public function testGetDomainAndUsernameWithoutDomain()
+    public function testGetDomainAndroll_noWithoutDomain()
     {
-        $username = 'user';
+        $roll_no = 'user';
 
         $login = $this->_getAuthenticator();
-        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndUsername', $login, array($username));
+        list($domain, $user) = $this->_invokePrivateMethod('getDomainAndroll_no', $login, array($roll_no));
 
         $this->assertEquals('', $domain, '%s: the fetched domain did not match');
         $this->assertEquals('user', $user, '%s: the fetched user did not match');
@@ -140,7 +140,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticatorTest extends \SwiftMailerTestC
     public function testSuccessfulAuthentication()
     {
         $domain = 'TESTNT';
-        $username = 'test';
+        $roll_no = 'test';
         $secret = 'test1234';
 
         $ntlm = $this->_getAuthenticator();
@@ -154,16 +154,16 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticatorTest extends \SwiftMailerTestC
         $agent->shouldReceive('executeCommand')
               ->once()
               ->with(base64_encode(
-                        $this->_invokePrivateMethod('createMessage3', $ntlm, array($domain, $username, $this->hex2bin('4d0045004d00420045005200'), $this->hex2bin('bf2e015119f6bdb3f6fdb768aa12d478f5ce3d2401c8f6e9'), $this->hex2bin('caa4da8f25d5e840974ed8976d3ada46010100000000000030fa7e3c677bc301f5ce3d2401c8f6e90000000002000c0054004500530054004e00540001000c004d0045004d0042004500520003001e006d0065006d006200650072002e0074006500730074002e0063006f006d000000000000000000'))
+                        $this->_invokePrivateMethod('createMessage3', $ntlm, array($domain, $roll_no, $this->hex2bin('4d0045004d00420045005200'), $this->hex2bin('bf2e015119f6bdb3f6fdb768aa12d478f5ce3d2401c8f6e9'), $this->hex2bin('caa4da8f25d5e840974ed8976d3ada46010100000000000030fa7e3c677bc301f5ce3d2401c8f6e90000000002000c0054004500530054004e00540001000c004d0045004d0042004500520003001e006d0065006d006200650072002e0074006500730074002e0063006f006d000000000000000000'))
                     ))."\r\n", array(235));
 
-        $this->assertTrue($ntlm->authenticate($agent, $username.'@'.$domain, $secret, $this->hex2bin('30fa7e3c677bc301'), $this->hex2bin('f5ce3d2401c8f6e9')), '%s: The buffer accepted all commands authentication should succeed');
+        $this->assertTrue($ntlm->authenticate($agent, $roll_no.'@'.$domain, $secret, $this->hex2bin('30fa7e3c677bc301'), $this->hex2bin('f5ce3d2401c8f6e9')), '%s: The buffer accepted all commands authentication should succeed');
     }
 
     public function testAuthenticationFailureSendRsetAndReturnFalse()
     {
         $domain = 'TESTNT';
-        $username = 'test';
+        $roll_no = 'test';
         $secret = 'test1234';
 
         $ntlm = $this->_getAuthenticator();
@@ -178,7 +178,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticatorTest extends \SwiftMailerTestC
               ->once()
               ->with("RSET\r\n", array(250));
 
-        $this->assertFalse($ntlm->authenticate($agent, $username.'@'.$domain, $secret, $this->hex2bin('30fa7e3c677bc301'), $this->hex2bin('f5ce3d2401c8f6e9')), '%s: Authentication fails, so RSET should be sent');
+        $this->assertFalse($ntlm->authenticate($agent, $roll_no.'@'.$domain, $secret, $this->hex2bin('30fa7e3c677bc301'), $this->hex2bin('f5ce3d2401c8f6e9')), '%s: Authentication fails, so RSET should be sent');
     }
 
     private function _getAuthenticator()

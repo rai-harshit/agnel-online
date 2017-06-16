@@ -56,7 +56,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('Lumen')->_findElements('.items');
-$els = $this->getModule('Lumen')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('Lumen')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('Lumen')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -162,7 +162,7 @@ $this->getModule('Lumen')->_savePageSource(codecept_output_dir().'page.html');
  
 Authenticates user for HTTP_AUTH
 
- * `param` $roll_no
+ * `param` $username
  * `param` $password
 
 
@@ -231,6 +231,18 @@ $I->checkOption('#agree');
 ```
 
  * `param` $option
+
+
+### clearApplicationHandlers
+ 
+Clear the registered application handlers.
+
+``` php
+<?php
+$I->clearApplicationHandlers();
+?>
+```
+
 
 
 ### click
@@ -642,6 +654,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `return` string[]
 
 
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
+
+
 ### grabRecord
  
 Retrieves record from database
@@ -729,6 +750,58 @@ $I->have('App\User', [], 'admin');
  * `[Part]` orm
 
 
+### haveApplicationHandler
+ 
+Register a handler than can be used to modify the Laravel application object after it is initialized.
+The Laravel application object will be passed as an argument to the handler.
+
+``` php
+<?php
+$I->haveApplicationHandler(function($app) {
+    $app->make('config')->set(['test_value' => '10']);
+});
+?>
+```
+
+ * `param` $handler
+
+
+### haveBinding
+ 
+Add a binding to the Laravel service container.
+(https://laravel.com/docs/master/container)
+
+``` php
+<?php
+$I->haveBinding('My\Interface', 'My\Implementation');
+?>
+```
+
+ * `param` $abstract
+ * `param` $concrete
+
+
+### haveContextualBinding
+ 
+Add a contextual binding to the Laravel service container.
+(https://laravel.com/docs/master/container)
+
+``` php
+<?php
+$I->haveContextualBinding('My\Class', '$variable', 'value');
+
+// This is similar to the following in your Laravel application
+$app->when('My\Class')
+    ->needs('$variable')
+    ->give('value');
+?>
+```
+
+ * `param` $concrete
+ * `param` $abstract
+ * `param` $implementation
+
+
 ### haveHttpHeader
  
 Sets the HTTP header to the passed value - which is used on
@@ -745,6 +818,21 @@ $I->amOnPage('test-headers.php');
  * `param string` $name the name of the request header
  * `param string` $value the value to set it to for subsequent
        requests
+
+
+### haveInstance
+ 
+Add an instance binding to the Laravel service container.
+(https://laravel.com/docs/master/container)
+
+``` php
+<?php
+$I->haveInstance('My\Class', new My\Class());
+?>
+```
+
+ * `param` $abstract
+ * `param` $instance
 
 
 ### haveMultiple
@@ -785,6 +873,21 @@ $user = $I->haveRecord('App\User', array('name' => 'Davert')); // returns Eloque
  * `param array` $attributes
  * `return` integer|EloquentModel
  * `[Part]` orm
+
+
+### haveSingleton
+ 
+Add a singleton binding to the Laravel service container.
+(https://laravel.com/docs/master/container)
+
+``` php
+<?php
+$I->haveSingleton('My\Interface', 'My\Singleton');
+?>
+```
+
+ * `param` $abstract
+ * `param` $concrete
 
 
 ### moveBack

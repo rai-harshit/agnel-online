@@ -80,7 +80,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
         $this->module->haveFacebookTestUserAccount(true);
         $testUserIdAfterRenew = $this->module->grabFacebookTestUserId();
         $this->assertNotEquals($testUserIdBeforeRenew, $testUserIdAfterRenew);
-        $this->assertEquals(ucwords($this->config['test_user']['name']), $this->module->grabFacebookTestroll_no());
+        $this->assertEquals(ucwords($this->config['test_user']['name']), $this->module->grabFacebookTestUserName());
     }
 
     public function testSeePostOnFacebookWithMessage()
@@ -131,7 +131,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
     {
         // preconditions: #1 facebook test user is created
         $this->module->haveFacebookTestUserAccount();
-        $testroll_no = $this->module->grabFacebookTestroll_no();
+        $testUserName = $this->module->grabFacebookTestUserName();
 
         // preconditions: #2 test user is logged in on facebook
         $this->module->haveTestUserLoggedInOnFacebook();
@@ -146,7 +146,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase
 
         // check that we are logged in with facebook
         $browserModule->see('Your User Object (/me)');
-        $browserModule->see($testroll_no);
+        $browserModule->see($testUserName);
     }
 
     private function checkPublishPermissions()

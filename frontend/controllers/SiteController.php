@@ -258,25 +258,19 @@ class SiteController extends Controller
         $userInfo=Yii::$app->db->createCommand('select [[name]],[[branch]],[[contact]],[[email]],[[status]] from {{user}} where roll_no=:rollNo')
             ->bindValue(':rollNo',$rollNo)
             ->queryOne();
-
-
-        $count1=-1;
-        foreach ($userInfo as $value) {
-            $count1++;
-            $dataProvider1[$count1]=$value;
-
-        }    
+        if($userInfo['status']==10)
+            $userInfo['status']='Active';
+  
             
-        $dataProvider2=Yii::$app->db->createCommand('select [[balance]] from {{wallet}} where rollNo=:rollNo')
+        $currentBal=Yii::$app->db->createCommand('select [[balance]] from {{wallet}} where rollNo=:rollNo')
             ->bindValue(':rollNo',$rollNo)
             ->queryScalar();
 
 
 
         return $this->render('myProfile',[
-            'dataProvider1'=>$dataProvider1,
-            'dataProvider2'=>$dataProvider2,
-            'count1'=>$count1,
+            'userInfo'=>$userInfo,
+            'currentBal'=>$currentBal,
                 ]);
     }
 
@@ -605,6 +599,8 @@ class SiteController extends Controller
     {
         $this->ReceiptPDF();
     }
+
+
 
 
         public function actionDelete($id)

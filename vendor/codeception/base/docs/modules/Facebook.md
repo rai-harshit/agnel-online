@@ -103,7 +103,7 @@ Returns URL for test user auto-login.
  * `return` string
 
 
-### grabFacebookTestroll_no
+### grabFacebookTestUserName
  
 Returns the test user name.
 

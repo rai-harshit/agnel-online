@@ -102,14 +102,14 @@ class UserTest extends \Codeception\Test\Unit
     {
         $user = User::create();
 
-        $user->roll_no = null;
-        $this->assertFalse($user->validate(['roll_no']));
+        $user->username = null;
+        $this->assertFalse($user->validate(['username']));
 
-        $user->roll_no = 'toolooooongnaaaaaaameeee';
-        $this->assertFalse($user->validate(['roll_no']));
+        $user->username = 'toolooooongnaaaaaaameeee';
+        $this->assertFalse($user->validate(['username']));
 
-        $user->roll_no = 'davert';
-        $this->assertTrue($user->validate(['roll_no']));
+        $user->username = 'davert';
+        $this->assertTrue($user->validate(['username']));
     }
 }
 ```
@@ -178,7 +178,7 @@ Let's see how we can use it for integration tests:
 
 ```php
 <?php
-function testroll_noCanBeChanged()
+function testUserNameCanBeChanged()
 {
     // create a user from framework, user will be deleted after the test
     $id = $this->tester->haveRecord('users', ['name' => 'miles']);
@@ -214,7 +214,7 @@ to establish connections to the database. In this case a test might look like:
 
 ```php
 <?php
-function testroll_noCanBeChanged()
+function testUserNameCanBeChanged()
 {
     // create a user from framework, user will be deleted after the test
     $id = $this->tester->haveInRepository('Acme\DemoBundle\Entity\User', ['name' => 'miles']);
@@ -285,19 +285,19 @@ class UserTest extends \Codeception\Test\Unit
     {
         $this->user = User::create();
 
-        $this->specify("roll_no is required", function() {
-            $this->user->roll_no = null;
-            $this->assertFalse($this->user->validate(['roll_no']));
+        $this->specify("username is required", function() {
+            $this->user->username = null;
+            $this->assertFalse($this->user->validate(['username']));
         });
 
-        $this->specify("roll_no is too long", function() {
-            $this->user->roll_no = 'toolooooongnaaaaaaameeee';
-            $this->assertFalse($this->user->validate(['roll_no']));
+        $this->specify("username is too long", function() {
+            $this->user->username = 'toolooooongnaaaaaaameeee';
+            $this->assertFalse($this->user->validate(['username']));
         });
 
-        $this->specify("roll_no is ok", function() {
-            $this->user->roll_no = 'davert';
-            $this->assertTrue($this->user->validate(['roll_no']));
+        $this->specify("username is ok", function() {
+            $this->user->username = 'davert';
+            $this->assertTrue($this->user->validate(['username']));
         });
     }
 }
@@ -337,14 +337,14 @@ class UserCest
     public function validateUser(UnitTester $t)
     {
         $user = $t->createUser();
-        $user->roll_no = null;
-        $t->assertFalse($user->validate(['roll_no']);
+        $user->username = null;
+        $t->assertFalse($user->validate(['username']);
 
-        $user->roll_no = 'toolooooongnaaaaaaameeee';
-        $t->assertFalse($user->validate(['roll_no']));
+        $user->username = 'toolooooongnaaaaaaameeee';
+        $t->assertFalse($user->validate(['username']));
 
-        $user->roll_no = 'davert';
-        $t->assertTrue($user->validate(['roll_no']));
+        $user->username = 'davert';
+        $t->assertTrue($user->validate(['username']));
 
         $t->seeInDatabase('users', ['name' => 'Miles', 'surname' => 'Davis']);
     }

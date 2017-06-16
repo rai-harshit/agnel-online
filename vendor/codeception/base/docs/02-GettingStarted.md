@@ -70,8 +70,8 @@ $I->lookForwardTo('access all website features'); // result to achieve
 
 After we have described the story background, let's start writing a scenario.
 
-We'll assume that we have a 'login' page where we get authenticated by providing a roll_no and password.
-Then we are sent to a user page, where we see the text `Hello, %roll_no%`. Let's look at how this scenario is written in Codeception:
+We'll assume that we have a 'login' page where we get authenticated by providing a username and password.
+Then we are sent to a user page, where we see the text `Hello, %username%`. Let's look at how this scenario is written in Codeception:
 
 ```php
 <?php
@@ -80,7 +80,7 @@ $I->am('user');
 $I->wantTo('login to website');
 $I->lookForwardTo('access all website features');
 $I->amOnPage('/login');
-$I->fillField('roll_no','davert');
+$I->fillField('Username','davert');
 $I->fillField('Password','qwerty');
 $I->click('Login');
 $I->see('Hello, davert');
@@ -94,7 +94,7 @@ I am user
 I wantTo login to website
 I lookForwardTo access all website features
 I amOnPage '/login'
-I fillField 'roll_no','davert'
+I fillField 'Username','davert'
 I fillField 'Password','qwerty'
 I click 'Login'
 I see 'Hello, davert'
@@ -155,7 +155,7 @@ Scenario --
  I am user
  I look forward to access all website features
  I am on page "/login"
- I fill field "roll_no" "davert"
+ I fill field "Username" "davert"
  I fill field "Password" "qwerty"
  I click "Login"
  I see "Hello, davert"

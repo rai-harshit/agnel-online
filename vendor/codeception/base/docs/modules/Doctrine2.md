@@ -103,11 +103,11 @@ Example:
 ``` php
 <?php
 
-$I->haveFakeRepository('Entity\User', array('findByroll_no' => function($roll_no) {  return null; }));
+$I->haveFakeRepository('Entity\User', array('findByUsername' => function($username) {  return null; }));
 
 ```
 
-This creates a stub class for Entity\User repository with redefined method findByroll_no,
+This creates a stub class for Entity\User repository with redefined method findByUsername,
 which will always return the NULL value.
 
  * `param` $classname

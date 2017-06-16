@@ -200,7 +200,7 @@ SOAP request may contain application specific information, like authentication o
 
 ```php
 <?php
-$I->haveSoapHeader('Auth', array('roll_no' => 'Miles', 'password' => '123456'));
+$I->haveSoapHeader('Auth', array('username' => 'Miles', 'password' => '123456'));
 
 ```
 will produce this XML header
@@ -208,7 +208,7 @@ will produce this XML header
 ```xml
 <soap:Header>
 <Auth>
-  <roll_no>Miles</roll_no>
+  <username>Miles</username>
   <password>123456</password>
 </Auth>
 </soap:Header>

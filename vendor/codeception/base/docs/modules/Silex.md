@@ -25,7 +25,7 @@ Bootstrap is the same as [WebTestCase.createApplication](http://silex.sensiolabs
 <?
 $app = require __DIR__.'/path/to/app.php';
 $app['debug'] = true;
-$app['exception_handler']->disable();
+unset($app['exception_handler']);
 
 return $app; // optionally
 ?>
@@ -59,7 +59,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('Silex')->_findElements('.items');
-$els = $this->getModule('Silex')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('Silex')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('Silex')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -165,7 +165,7 @@ $this->getModule('Silex')->_savePageSource(codecept_output_dir().'page.html');
  
 Authenticates user for HTTP_AUTH
 
- * `param` $roll_no
+ * `param` $username
  * `param` $password
 
 
@@ -597,6 +597,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `param` $cssOrXpath
  * `param` $attribute
  * `return` string[]
+
+
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
 
 
 ### grabService

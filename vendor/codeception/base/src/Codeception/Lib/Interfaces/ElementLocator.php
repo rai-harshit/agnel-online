@@ -15,7 +15,7 @@ interface ElementLocator
      * ```php
      * <?php
      * $els = $this->getModule('{{MODULE_NAME}}')->_findElements('.items');
-     * $els = $this->getModule('{{MODULE_NAME}}')->_findElements(['name' => 'roll_no']);
+     * $els = $this->getModule('{{MODULE_NAME}}')->_findElements(['name' => 'username']);
      *
      * $editLinks = $this->getModule('{{MODULE_NAME}}')->_findElements(['link' => 'Edit']);
      * // now you can iterate over $editLinks and check that all them have valid hrefs

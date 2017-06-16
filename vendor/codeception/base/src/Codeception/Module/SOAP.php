@@ -150,7 +150,7 @@ EOF;
      *
      * ``` php
      * <?php
-     * $I->haveSoapHeader('AuthHeader', array('roll_no' => 'davert', 'password' => '123345'));
+     * $I->haveSoapHeader('AuthHeader', array('username' => 'davert', 'password' => '123345'));
      * ```
      *
      * Will produce header:
@@ -159,7 +159,7 @@ EOF;
      *    <soapenv:Header>
      *      <SessionHeader>
      *      <AuthHeader>
-     *          <roll_no>davert</roll_no>
+     *          <username>davert</username>
      *          <password>12345</password>
      *      </AuthHeader>
      *   </soapenv:Header>

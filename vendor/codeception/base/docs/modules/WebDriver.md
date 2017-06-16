@@ -7,16 +7,19 @@ New generation Selenium WebDriver module.
 
 ### Selenium
 
+To run Selenium Server you will need Java and Chrome or Firefox browser installed.
+
 1. Download [Selenium Server](http://docs.seleniumhq.org/download/)
-2. Launch the daemon: `java -jar selenium-server-standalone-2.xx.xxx.jar`
-3. Configure this module (in acceptance.suite.yml) by setting url and browser:
+2. For Chrome browser install [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/getting-started), for Firefox browser install [GeckoDriver](https://github.com/mozilla/geckodriver).
+3. Launch the server: `java -jar selenium-server-standalone-3.xx.xxx.jar`. To locate Chromedriver binary use `-Dwebdriver.chrome.driver=./chromedriver` option. For Geckodriver use `-Dwebdriver.gecko.driver=./geckodriver`.
+4. Configure this module (in acceptance.suite.yml) by setting url and browser:
 
 ```yaml
     modules:
        enabled:
           - WebDriver:
              url: 'http://localhost/'
-             browser: firefox
+             browser: chrome
 ```
 
 ### PhantomJS
@@ -37,6 +40,17 @@ It allows you to run Selenium tests on a server without a GUI installed.
              browser: phantomjs
 ```
 
+### Headless Selenium in Docker
+
+Docker can ship Selenium Server with all its dependencies and browsers inside a single container.
+Running tests inside Docker is as easy as pulling [official selenium image](https://github.com/SeleniumHQ/docker-selenium) and starting a container with Chrome:
+
+```
+docker run --net=host selenium/standalone-chrome
+```
+
+By using `--net=host` we allow selenium to access local websites.
+
 ## Cloud Testing
 
 Cloud Testing services can run your WebDriver tests in the cloud.
@@ -45,8 +59,8 @@ you should use a tunnel application provided by a service.
 
 ### SauceLabs
 
-1. Create an account at [SauceLabs.com](http://SauceLabs.com) to get your roll_no and access key
-2. In the module configuration use the format `roll_no`:`access_key`@ondemand.saucelabs.com' for `host`
+1. Create an account at [SauceLabs.com](http://SauceLabs.com) to get your username and access key
+2. In the module configuration use the format `username`:`access_key`@ondemand.saucelabs.com' for `host`
 3. Configure `platform` under `capabilities` to define the [Operating System](https://docs.saucelabs.com/reference/platforms-configurator/#/)
 4. run a tunnel app if your site can't be accessed from Internet
 
@@ -55,7 +69,7 @@ you should use a tunnel application provided by a service.
        enabled:
           - WebDriver:
              url: http://mysite.com
-             host: '<roll_no>:<access key>@ondemand.saucelabs.com'
+             host: '<username>:<access key>@ondemand.saucelabs.com'
              port: 80
              browser: chrome
              capabilities:
@@ -64,8 +78,8 @@ you should use a tunnel application provided by a service.
 
 ### BrowserStack
 
-1. Create an account at [BrowserStack](https://www.browserstack.com/) to get your roll_no and access key
-2. In the module configuration use the format `roll_no`:`access_key`@hub.browserstack.com' for `host`
+1. Create an account at [BrowserStack](https://www.browserstack.com/) to get your username and access key
+2. In the module configuration use the format `username`:`access_key`@hub.browserstack.com' for `host`
 3. Configure `os` and `os_version` under `capabilities` to define the operating System
 4. If your site is available only locally or via VPN you should use a tunnel app. In this case add `browserstack.local` capability and set it to true.
 
@@ -74,7 +88,7 @@ you should use a tunnel application provided by a service.
        enabled:
           - WebDriver:
              url: http://mysite.com
-             host: '<roll_no>:<access key>@hub.browserstack.com'
+             host: '<username>:<access key>@hub.browserstack.com'
              port: 80
              browser: chrome
              capabilities:
@@ -111,7 +125,7 @@ you should use a tunnel application provided by a service.
 * `window_size` - Initial window size. Set to `maximize` or a dimension in the format `640x480`.
 * `clear_cookies` - Set to false to keep cookies, or set to true (default) to delete all cookies between tests.
 * `wait` - Implicit wait (default 0 seconds).
-* `capabilities` - Sets Selenium2 [desired capabilities](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities). Should be a key-value array.
+* `capabilities` - Sets Selenium [desired capabilities](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities). Should be a key-value array.
 * `connection_timeout` - timeout for opening a connection to remote selenium server (30 seconds by default).
 * `request_timeout` - timeout for a request to return something from remote selenium server (30 seconds by default).
 * `pageload_timeout` - amount of time to wait for a page load to complete before throwing an error (default 0 seconds).
@@ -133,11 +147,6 @@ Example (`acceptance.suite.yml`)
                  unexpectedAlertBehaviour: 'accept'
                  firefox_profile: '~/firefox-profiles/codeception-profile.zip.b64'
 ```
-
-### Status
-
-Stability: **stable**
-Based on [facebook php-webdriver](https://github.com/facebook/php-webdriver)
 
 ## Usage
 
@@ -192,6 +201,32 @@ $this->getModule('WebDriver')->webDriver->getKeyboard()->sendKeys('hello, webdri
 
 ## Actions
 
+### _findClickable
+
+*hidden API method, expected to be used from Helper classes*
+ 
+Locates a clickable element.
+
+Use it in Helpers or GroupObject or Extension classes:
+
+```php
+<?php
+$module = $this->getModule('WebDriver');
+$page = $module->webDriver;
+
+// search a link or button on a page
+$el = $module->_findClickable($page, 'Click Me');
+
+// search a link or button within an element
+$topBar = $module->_findElements('.top-bar')[0];
+$el = $module->_findClickable($topBar, 'Click Me');
+
+```
+ * `param` $page WebDriver instance or an element to search within
+ * `param` $link a link text or locator to click
+ * `return` WebDriverElement
+
+
 ### _findElements
 
 *hidden API method, expected to be used from Helper classes*
@@ -207,7 +242,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('WebDriver')->_findElements('.items');
-$els = $this->getModule('WebDriver')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('WebDriver')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('WebDriver')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -845,6 +880,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `return` string[]
 
 
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
+
+
 ### grabTextFrom
  
 Finds and returns the text contents of the given element.
@@ -871,9 +915,9 @@ If a fuzzy locator is used, the field is found by field name, CSS, and XPath.
 ``` php
 <?php
 $name = $I->grabValueFrom('Name');
-$name = $I->grabValueFrom('input[name=roll_no]');
-$name = $I->grabValueFrom('descendant-or-self::form/descendant::input[@name = 'roll_no']');
-$name = $I->grabValueFrom(['name' => 'roll_no']);
+$name = $I->grabValueFrom('input[name=username]');
+$name = $I->grabValueFrom('descendant-or-self::form/descendant::input[@name = 'username']');
+$name = $I->grabValueFrom(['name' => 'username']);
 ?>
 ```
 

@@ -40,11 +40,11 @@ class SoapTest extends \PHPUnit_Framework_TestCase
     
     public function testBuildHeaders()
     {
-        $this->module->haveSoapHeader('AuthHeader', ['roll_no' => 'davert', 'password' => '123456']);
+        $this->module->haveSoapHeader('AuthHeader', ['username' => 'davert', 'password' => '123456']);
         $dom = new \DOMDocument();
         $dom->load($this->layout);
         $header = $dom->createElement('AuthHeader');
-        $header->appendChild($dom->createElement('roll_no', 'davert'));
+        $header->appendChild($dom->createElement('username', 'davert'));
         $header->appendChild($dom->createElement('password', '123456'));
         $dom->documentElement->getElementsByTagName('Header')->item(0)->appendChild($header);
         $this->assertEqualXMLStructure($this->module->xmlRequest->documentElement, $dom->documentElement);

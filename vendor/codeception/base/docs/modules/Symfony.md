@@ -95,7 +95,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('Symfony')->_findElements('.items');
-$els = $this->getModule('Symfony')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('Symfony')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('Symfony')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -201,7 +201,7 @@ $this->getModule('Symfony')->_savePageSource(codecept_output_dir().'page.html');
  
 Authenticates user for HTTP_AUTH
 
- * `param` $roll_no
+ * `param` $username
  * `param` $password
 
 
@@ -641,6 +641,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `param` $cssOrXpath
  * `param` $attribute
  * `return` string[]
+
+
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
 
 
 ### grabService

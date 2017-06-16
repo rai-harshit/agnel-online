@@ -13,8 +13,8 @@
  *
  * @author Chris Corbyn
  *
- * @method Swift_SmtpTransport setUsername(string $username) Set the username to authenticate with.
- * @method string              getUsername()                 Get the username to authenticate with.
+ * @method Swift_SmtpTransport setroll_no(string $roll_no) Set the roll_no to authenticate with.
+ * @method string              getroll_no()                 Get the roll_no to authenticate with.
  * @method Swift_SmtpTransport setPassword(string $password) Set the password to authenticate with.
  * @method string              getPassword()                 Get the password to authenticate with.
  * @method Swift_SmtpTransport setAuthMode(string $mode)     Set the auth mode to use to authenticate.
@@ -49,7 +49,7 @@ class Swift_SmtpTransport extends Swift_Transport_EsmtpTransport
      * @param int    $port
      * @param string $security
      *
-     * @return self
+     * @return Swift_SmtpTransport
      */
     public static function newInstance($host = 'localhost', $port = 25, $security = null)
     {

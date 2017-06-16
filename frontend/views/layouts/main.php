@@ -13,23 +13,15 @@ use yii\db\Command;
 use frontend\models\Cart;
 
 AppAsset::register($this);
-if(isset(Yii::$app->user->identity))
-{
+if(isset(Yii::$app->user->identity)){
     $orderCount=Yii::$app->db->createCommand('select count([[id]]) from {{cart}} where rollNo=:rollNo')
     ->bindValue(':rollNo',Yii::$app->user->identity->roll_no)
     ->queryScalar();
 }
-else
-{
+else{
     $orderCount=0;
 }
 
-
-?>
-
-
-
-<?php 
     $this->beginPage() 
 ?>
 
@@ -46,14 +38,26 @@ else
     <?php $this->head() ?>
 
     <style type="text/css">
-    .container {
-     padding-right: 0; /*15px in bootstrap.css*/
-     padding-left:1em;
-     padding-bottom:0px;
-     padding-top:0px;
-     margin-bottom:0px;}
 
-     .wrap {overflow-x:auto; overflow-y:auto;}   
+    body {
+        background-color:#dce0e8;
+    }
+    .container {
+         padding-right: 0; /*15px in bootstrap.css*/
+         padding-left:1em;
+         padding-bottom:0px;
+         padding-top:0px;
+         margin-bottom:0px;
+     }
+    .wrap {overflow-x:auto; overflow-y:auto;}  
+
+    .heading {
+        background-color:#808ca0;
+        padding-top:5px;
+        padding-bottom:10px;
+        border-radius: 10px;
+        font-size:large;
+    }
     </style>
 
 </head>
@@ -65,7 +69,7 @@ else
     
 
 
-    <div class='wrap'>
+    <div class='wrap' style="overflow:hidden">
         <div class="container">
                 <?php
                     NavBar::begin([
@@ -77,9 +81,8 @@ else
                         $menuItems = [
                             ['label' => '<font size=4.5px>'.$orderCount.'</font> <span class="glyphicon glyphicon-shopping-cart"></span>  CART', 'url' => ['/site/cart']],
                             ['label' => 'CATALOGUE', 'url' => ['/site/catalogue']],
-                            ['label' => 'PROFILE', 'url' => ['/site/my-profile']],
-                            ['label' => 'CONTACT', 'url' => ['/site/contact']],
-                            ['label' => 'ABOUT', 'url' => ['/site/about']],
+                            ['label' => 'CONTACT US', 'url' => ['/site/contact']],
+                            ['label' => 'ABOUT US', 'url' => ['/site/about']],
 
                             ];
 
@@ -90,14 +93,15 @@ else
                             } 
                             else 
                             {
+                                $menuItems[] = ['label' => 'PROFILE', 'url' => ['/site/my-profile']];
                                 $menuItems[] = '<li>'
                                     . Html::beginForm(['/site/logout'], 'post')
                                     . Html::submitButton(
-                                        '<b style="color:black;">LOGOUT  (' . Yii::$app->user->identity->roll_no . ')</b>',
+                                        '<b name="logout" style="color:black;">LOGOUT  (' . Yii::$app->user->identity->roll_no . ')</b>',
                                         ['class' => 'btn btn-link logout']
                                     )
                                     . Html::endForm()
-                                    . '</li>';                               
+                                    . '</li>';                                
                             }
                             echo Nav::widget([
                                 'options' => ['class' => 'navbar-nav navbar-right'],
@@ -121,7 +125,7 @@ else
     </div>
 
     <!--Footer-->
-        <footer class="footer">
+        <footer class="footer" style="background-color:#808ca0;">
             <div class="container">
                 <p class="pull-left">&copy; AGNEL-ONLINE <?= date('Y') ?></p>
                 <p class="pull-right"><?= Yii::powered() ?></p>

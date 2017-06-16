@@ -249,7 +249,8 @@ class Configuration
             ->files()
             ->name('*.{suite,suite.dist}.yml')
             ->in(self::$dir . DIRECTORY_SEPARATOR . self::$testsDir)
-            ->depth('< 1');
+            ->depth('< 1')
+            ->sortByName();
         self::$suites = [];
 
         /** @var SplFileInfo $suite */
@@ -570,7 +571,22 @@ class Configuration
      */
     public static function append(array $config = [])
     {
-        return self::$config = self::mergeConfigs(self::$config, $config);
+        self::$config = self::mergeConfigs(self::$config, $config);
+
+        if (isset(self::$config['paths']['log'])) {
+            self::$logDir = self::$config['paths']['log'];
+        }
+        if (isset(self::$config['paths']['data'])) {
+            self::$dataDir = self::$config['paths']['data'];
+        }
+        if (isset(self::$config['paths']['support'])) {
+            self::$supportDir = self::$config['paths']['support'];
+        }
+        if (isset(self::$config['paths']['tests'])) {
+            self::$testsDir = self::$config['paths']['tests'];
+        }
+
+        return self::$config;
     }
 
     public static function mergeConfigs($a1, $a2)

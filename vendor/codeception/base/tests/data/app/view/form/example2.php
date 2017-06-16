@@ -1,9 +1,9 @@
 <html><body>
 <form class="well loginform" method="post">
-    <label>roll_no</label>
+    <label>Username</label>
     <div class="input-prepend">
         <span class="add-on"><i class="icon-user"></i></span>
-        <input type="text" name="roll_no" placeholder="Your roll_no …">
+        <input type="text" name="username" placeholder="Your username …">
     </div>
 
     <div class="password">

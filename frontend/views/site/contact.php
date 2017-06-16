@@ -10,21 +10,32 @@ use yii\captcha\Captcha;
 
 
 
-$this->title = 'Contact';
+$this->title = 'Contact Us';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="container">
+<style type="text/css">
+    .contact-form{
+        background-color:#808ca0;
+        padding:15px;
+        border-radius:10px;
+    }    
+</style>
+
 <div class="site-contact">
+<div class="container" style="padding-right:10px">
+    <div class="heading">
+    <center>
+        <h2><b><?= Html::encode($this->title) ?></b></h2>
+    </center>
+    </div>
+    <br/>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-    </p>
-
-    <div class="row">
-        <div class="col-lg-5">
+    <div class="contact-form" style="padding-right: 10px">
+        <b>
+        <p>
+        If you have any complaints or suggestions, feel free to write to us using the contact form below.
+        </p>
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
@@ -36,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6" style="padding-top:10px">{input}</div></div>',
                 ]) ?>
 
                 <div class="form-group">
@@ -44,8 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
             <?php ActiveForm::end(); ?>
-        </div>
+            </b>
     </div>
+    <br/>
 
 </div>
 </div>

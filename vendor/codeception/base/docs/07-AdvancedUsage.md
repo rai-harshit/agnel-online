@@ -54,7 +54,7 @@ class BasicCest
         $I->wantTo('log in to site');
         $I->amOnPage('/');
         $I->click('Login');
-        $I->fillField('roll_no', 'john');
+        $I->fillField('username', 'john');
         $I->fillField('password', 'coltrane');
         $I->click('Enter');
         $I->see('Hello, John');
@@ -298,7 +298,7 @@ class ModeratorCest {
     protected function login(AcceptanceTester $I)
     {
         $I->amOnPage('/login');
-        $I->fillField('roll_no', 'miles');
+        $I->fillField('Username', 'miles');
         $I->fillField('Password', 'davis');
         $I->click('Login');
     }

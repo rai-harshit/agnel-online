@@ -16,7 +16,7 @@ you will most likely be asked to create a ticket in `GitHub`_ since it is
 simply not feasible to manage such requests from a number of a different
 sources.
 
-When you go to GitHub you will be asked to create a username and password
+When you go to GitHub you will be asked to create a roll_no and password
 before you can create a ticket. This is free and takes very little time.
 
 When you create your ticket, do not assign it to any milestones. A developer

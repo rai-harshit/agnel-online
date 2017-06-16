@@ -166,6 +166,22 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
         $this->module->dontSeeLink('Next', 'http://codeception.com/');
     }
 
+    public function testSeeLinkMatchesRelativeLink()
+    {
+        $this->module->amOnPage('/info');
+        $this->module->seeLink('Sign in!', '/login');
+    }
+
+    public function testDontSeeLinkMatchesRelativeLink()
+    {
+        $this->setExpectedException(
+            'PHPUnit_Framework_AssertionFailedError',
+            "Link containing text 'Sign in!' and URL '/login' was found in page /info"
+        );
+        $this->module->amOnPage('/info');
+        $this->module->dontSeeLink('Sign in!', '/login');
+    }
+
     public function testClick()
     {
         $this->module->amOnPage('/');
@@ -391,11 +407,11 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
     public function testTextFieldByName()
     {
         $this->module->amOnPage('/form/example1');
-        $this->module->fillField('LoginForm[roll_no]', 'davert');
+        $this->module->fillField('LoginForm[username]', 'davert');
         $this->module->fillField('LoginForm[password]', '123456');
         $this->module->click('Login');
         $login = data::get('form');
-        $this->assertEquals('davert', $login['LoginForm']['roll_no']);
+        $this->assertEquals('davert', $login['LoginForm']['username']);
         $this->assertEquals('123456', $login['LoginForm']['password']);
     }
 
@@ -912,12 +928,12 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
     {
         $this->module->amOnPage('/form/example1');
         $this->module->see('Login', 'button');
-        $this->module->fillField('#LoginForm_roll_no', 'davert');
+        $this->module->fillField('#LoginForm_username', 'davert');
         $this->module->fillField('#LoginForm_password', '123456');
         $this->module->checkOption('#LoginForm_rememberMe');
         $this->module->click('Login');
         $login = data::get('form');
-        $this->assertEquals('davert', $login['LoginForm']['roll_no']);
+        $this->assertEquals('davert', $login['LoginForm']['username']);
         $this->assertEquals('123456', $login['LoginForm']['password']);
         $this->assertNotEmpty($login['LoginForm']['rememberMe']);
     }
@@ -925,11 +941,11 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
     public function testExample2()
     {
         $this->module->amOnPage('/form/example2');
-        $this->module->fillField('input[name=roll_no]', 'davert');
+        $this->module->fillField('input[name=username]', 'davert');
         $this->module->fillField('input[name=password]', '123456');
         $this->module->click('Log on');
         $login = data::get('form');
-        $this->assertEquals('davert', $login['roll_no']);
+        $this->assertEquals('davert', $login['username']);
         $this->assertEquals('123456', $login['password']);
         $this->assertEquals('login', $login['action']);
     }
@@ -959,33 +975,33 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
     public function testExample5()
     {
         $this->module->amOnPage('/form/example5');
-        $this->module->fillField('roll_no', 'John');
+        $this->module->fillField('username', 'John');
         $this->module->fillField('password', '1234');
         $this->module->click('Login');
-        $this->module->seeCurrentUrlEquals('/form/example5?roll_no=John&password=1234');
+        $this->module->seeCurrentUrlEquals('/form/example5?username=John&password=1234');
     }
 
     public function testExample5WithSubmitForm()
     {
         $this->module->amOnPage('/form/example5');
-        $this->module->submitForm('form', ['roll_no' => 'John', 'password' => '1234']);
-        $this->module->seeCurrentUrlEquals('/form/example5?roll_no=John&password=1234');
+        $this->module->submitForm('form', ['username' => 'John', 'password' => '1234']);
+        $this->module->seeCurrentUrlEquals('/form/example5?username=John&password=1234');
     }
 
     public function testExample5WithParams()
     {
         $this->module->amOnPage('/form/example5?a=b');
-        $this->module->fillField('roll_no', 'John');
+        $this->module->fillField('username', 'John');
         $this->module->fillField('password', '1234');
         $this->module->click('Login');
-        $this->module->seeCurrentUrlEquals('/form/example5?roll_no=John&password=1234');
+        $this->module->seeCurrentUrlEquals('/form/example5?username=John&password=1234');
     }
 
     public function testExample5WithSubmitFormAndParams()
     {
         $this->module->amOnPage('/form/example5?a=b');
-        $this->module->submitForm('form', ['roll_no' => 'John', 'password' => '1234']);
-        $this->module->seeCurrentUrlEquals('/form/example5?roll_no=John&password=1234');
+        $this->module->submitForm('form', ['username' => 'John', 'password' => '1234']);
+        $this->module->seeCurrentUrlEquals('/form/example5?username=John&password=1234');
     }
 
     /**
@@ -1173,9 +1189,9 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
         $this->module->click("#button2");
         $form = data::get('form');
         $this->assertTrue(isset($form['button2']));
-        $this->assertTrue(isset($form['roll_no']));
+        $this->assertTrue(isset($form['username']));
         $this->assertEquals('value2', $form['button2']);
-        $this->assertEquals('fred', $form['roll_no']);
+        $this->assertEquals('fred', $form['username']);
     }
 
     /**
@@ -1184,13 +1200,13 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
     public function testSubmitFormWithTwoSubmitButtonsSubmitsCorrectValueAfterFillField()
     {
         $this->module->amOnPage('/form/example10');
-        $this->module->fillField("roll_no", "bob");
+        $this->module->fillField("username", "bob");
         $this->module->click("#button2");
         $form = data::get('form');
         $this->assertTrue(isset($form['button2']));
-        $this->assertTrue(isset($form['roll_no']));
+        $this->assertTrue(isset($form['username']));
         $this->assertEquals('value2', $form['button2']);
-        $this->assertEquals('bob', $form['roll_no']);
+        $this->assertEquals('bob', $form['username']);
     }
 
     /*
@@ -1622,5 +1638,15 @@ abstract class TestsForWeb extends \Codeception\TestCase\Test
         $this->module->amOnPage('/basehref');
         $this->module->click('Relative Form');
         $this->module->seeCurrentUrlEquals('/form/example5');
+    }
+
+    public function testAttachFileThrowsCorrectMessageWhenFileDoesNotExist()
+    {
+        $filename = 'does-not-exist.jpg';
+        $expectedMessage = 'File does not exist: ' . codecept_data_dir($filename);
+        $this->setExpectedException('InvalidArgumentException', $expectedMessage);
+
+        $this->module->amOnPage('/form/file');
+        $this->module->attachFile('Avatar', $filename);
     }
 }

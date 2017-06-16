@@ -270,7 +270,7 @@ you'll be sending the message to.
         $replacements = array();
         foreach ($users as $user) {
           $replacements[$user['email']] = array(
-            '{username}'=>$user['username'],
+            '{roll_no}'=>$user['roll_no'],
             '{password}'=>$user['password']
           );
         }
@@ -290,9 +290,9 @@ line) with your placeholders.
 .. code-block:: php
 
     $message = Swift_Message::newInstance()
-      ->setSubject('Important notice for {username}')
+      ->setSubject('Important notice for {roll_no}')
       ->setBody(
-        "Hello {username}, we have reset your password to {password}\n" .
+        "Hello {roll_no}, we have reset your password to {password}\n" .
         "Please log in and change it at your earliest convenience."
       )
       ;
@@ -359,7 +359,7 @@ provide an implementation that does this. You need to create a small class.
 
         if ($row = mysql_fetch_assoc($result)) {
           return array(
-            '{username}'=>$row['username'],
+            '{roll_no}'=>$row['roll_no'],
             '{password}'=>$row['password']
           );
         }

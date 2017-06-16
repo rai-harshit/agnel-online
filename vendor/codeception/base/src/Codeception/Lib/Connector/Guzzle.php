@@ -80,17 +80,17 @@ class Guzzle extends Client
     }
 
     /**
-     * @param string $roll_no
+     * @param string $username
      * @param string $password
      * @param string $type  Default: 'basic'
      */
-    public function setAuth($roll_no, $password, $type = 'basic')
+    public function setAuth($username, $password, $type = 'basic')
     {
-        if (!$roll_no) {
+        if (!$username) {
             unset($this->requestOptions['auth']);
             return;
         }
-        $this->requestOptions['auth'] = [$roll_no, $password, $type];
+        $this->requestOptions['auth'] = [$username, $password, $type];
     }
 
     /**

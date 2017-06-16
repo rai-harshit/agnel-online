@@ -41,7 +41,7 @@ recipients are delivered to successfully then the value 5 will be returned.
 
     // Create the Transport
     $transport = Swift_SmtpTransport::newInstance('smtp.example.org', 25)
-      ->setUsername('your username')
+      ->setroll_no('your roll_no')
       ->setPassword('your password')
       ;
 
@@ -88,7 +88,7 @@ number up, but you get the idea). All the server needs is the ability to
 connect to a remote (or even local) SMTP server on the correct port number
 (usually 25).
 
-SMTP servers often require users to authenticate with a username and password
+SMTP servers often require users to authenticate with a roll_no and password
 before any mail can be sent to other domains. This is easily achieved using
 Swift Mailer with the SMTP Transport.
 
@@ -192,19 +192,19 @@ settings.
           ;
         */
 
-SMTP with a Username and Password
+SMTP with a roll_no and Password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some servers require authentication. You can provide a username and password
-with ``setUsername()`` and ``setPassword()`` methods.
+Some servers require authentication. You can provide a roll_no and password
+with ``setroll_no()`` and ``setPassword()`` methods.
 
-To use a username and password with the SMTP Transport:
+To use a roll_no and password with the SMTP Transport:
 
 * Create the Transport with ``Swift_SmtpTransport::newInstance()``.
 
-* Call the ``setUsername()`` and ``setPassword()`` methods on the Transport.
+* Call the ``setroll_no()`` and ``setPassword()`` methods on the Transport.
 
-Your username and password will be used to authenticate upon first connect
+Your roll_no and password will be used to authenticate upon first connect
 when ``send()`` are first used on the Mailer.
 
 If authentication fails, an Exception of type ``Swift_TransportException`` will
@@ -220,9 +220,9 @@ be thrown.
 
         require_once 'lib/swift_required.php';
 
-        // Create the Transport the call setUsername() and setPassword()
+        // Create the Transport the call setroll_no() and setPassword()
         $transport = Swift_SmtpTransport::newInstance('smtp.example.org', 25)
-          ->setUsername('username')
+          ->setroll_no('roll_no')
           ->setPassword('password')
           ;
 

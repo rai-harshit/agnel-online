@@ -37,7 +37,7 @@ Please note that **any website** can be covered with acceptance tests, even if y
 $I = new AcceptanceTester($scenario);
 $I->amOnPage('/');
 $I->click('Sign Up');
-$I->submitForm('#signup', ['roll_no' => 'MilesDavis', 'email' => 'miles@davis.com']);
+$I->submitForm('#signup', ['username' => 'MilesDavis', 'email' => 'miles@davis.com']);
 $I->see('Thank you for Signing Up!');
 ```
 
@@ -74,7 +74,7 @@ Codeception provides connectors to several popular PHP frameworks. You can also 
 $I = new FunctionalTester($scenario);
 $I->amOnPage('/');
 $I->click('Sign Up');
-$I->submitForm('#signup', ['roll_no' => 'MilesDavis', 'email' => 'miles@davis.com']);
+$I->submitForm('#signup', ['username' => 'MilesDavis', 'email' => 'miles@davis.com']);
 $I->see('Thank you for Signing Up!');
 $I->seeEmailSent('miles@davis.com', 'Thank you for registration');
 $I->seeInDatabase('users', ['email' => 'miles@davis.com']);

@@ -93,7 +93,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('Laravel5')->_findElements('.items');
-$els = $this->getModule('Laravel5')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('Laravel5')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('Laravel5')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -199,7 +199,7 @@ $this->getModule('Laravel5')->_savePageSource(codecept_output_dir().'page.html')
  
 Authenticates user for HTTP_AUTH
 
- * `param` $roll_no
+ * `param` $username
  * `param` $password
 
 
@@ -212,7 +212,7 @@ an array of credentials.
 ``` php
 <?php
 // provide array of credentials
-$I->amLoggedAs(['roll_no' => 'jane@example.com', 'password' => 'password']);
+$I->amLoggedAs(['username' => 'jane@example.com', 'password' => 'password']);
 
 // provide User object
 $I->amLoggedAs( new User );
@@ -837,6 +837,15 @@ $I->grabNumRecords('App\User', array('name' => 'davert'));
  * `[Part]` orm
 
 
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
+
+
 ### grabRecord
  
 Retrieves record from database
@@ -1259,8 +1268,8 @@ contains `$expectedErrorMessage`.
 
 ``` php
 <?php
-$I->seeFormErrorMessage('roll_no');
-$I->seeFormErrorMessage('roll_no', 'Invalid roll_no');
+$I->seeFormErrorMessage('username');
+$I->seeFormErrorMessage('username', 'Invalid Username');
 ?>
 ```
  * `param string` $key
@@ -1276,7 +1285,7 @@ This method calls `seeFormErrorMessage` for each entry in the `$bindings` array.
 ``` php
 <?php
 $I->seeFormErrorMessages([
-    'roll_no' => 'Invalid roll_no',
+    'username' => 'Invalid Username',
     'password' => null,
 ]);
 ?>

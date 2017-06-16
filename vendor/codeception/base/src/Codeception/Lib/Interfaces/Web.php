@@ -740,9 +740,9 @@ interface Web
      * ``` php
      * <?php
      * $name = $I->grabValueFrom('Name');
-     * $name = $I->grabValueFrom('input[name=roll_no]');
-     * $name = $I->grabValueFrom('descendant-or-self::form/descendant::input[@name = 'roll_no']');
-     * $name = $I->grabValueFrom(['name' => 'roll_no']);
+     * $name = $I->grabValueFrom('input[name=username]');
+     * $name = $I->grabValueFrom('descendant-or-self::form/descendant::input[@name = 'username']');
+     * $name = $I->grabValueFrom(['name' => 'username']);
      * ?>
      * ```
      *
@@ -975,4 +975,11 @@ interface Web
      * @return mixed
      */
     public function grabCookie($cookie, array $params = []);
+
+    /**
+     * Grabs current page source code.
+     *
+     * @return string Current page source code.
+     */
+    public function grabPageSource();
 }

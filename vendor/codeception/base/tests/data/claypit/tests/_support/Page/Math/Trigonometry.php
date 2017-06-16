@@ -8,7 +8,7 @@ class Trigonometry
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
-     * public static $roll_noField = '#roll_no';
+     * public static $usernameField = '#username';
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
 

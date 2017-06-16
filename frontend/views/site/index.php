@@ -6,13 +6,38 @@
 $this->title = 'AGNEL ONLINE';
 ?>
 
-<div class="site-index">
+<style type="text/css">
+    .col-md-4{
+        border: 0.5px solid black;
+        border-radius:10px;
+        background-color:#808ca0;
+        padding:10px;
+        padding-left: 10px;
+        padding-right: 10px
+    }
+    .container-fluid{
+        padding:0px;
+        margin-bottom:-1px 
+    }
+    .row{
+        padding-left:25px;
+        padding-right:25px;
+    }
+    img{
+        width:100%;
+    }
+    p{  
+        padding-right:10px;
+        padding-left:10px;
+    }
 
-    <div class="body-content">
+</style>
 
-<div class="container-fluid" style="padding-top: 0px" >
 
-    <div id="my-carousel" class="carousel slide" data-ride="carousel" style="width:100%; padding-top:0px">
+<div class="site-index"">
+<div class="container-fluid">
+
+    <div id="my-carousel" class="carousel slide" data-ride="carousel" style="width:100%; padding-top:0px;padding-bottom:0px">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
@@ -21,25 +46,21 @@ $this->title = 'AGNEL ONLINE';
         </ol>
 
        <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="<?= yii\helpers\Url::to('@web/images/college.jpg') ?>" style="width: 100%"/>
-                <div class="carousel-caption">
-                </div>
+                <img src="<?= yii\helpers\Url::to('@web/images/college.jpg') ?>"/>
             </div>
             <div class="item">
-                <img src="<?= yii\helpers\Url::to('@web/images/canteen.jpg') ?>" style="width: 100%"/>
-                <div class="carousel-caption">
-                </div>
+                <img src="<?= yii\helpers\Url::to('@web/images/canteen.jpg') ?>"/>
             </div>
             <div class="item">
-                <img src="<?= yii\helpers\Url::to('@web/images/stationery.jpg') ?>" style="width: 100%"/>
-                <div class="carousel-caption">
-                </div>
-            </div>
-        </div> 
+                <img src="<?= yii\helpers\Url::to('@web/images/stationery.jpg') ?>"/>
+            </div>    
+        </div>
 
-    <!-- Controls -->
+
+        <!-- Controls -->
+        <div>
         <a class="left carousel-control" href="#my-carousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -48,31 +69,37 @@ $this->title = 'AGNEL ONLINE';
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+        </div>
     </div>
-    <div class="row" style="padding-top:0px">
-            <div class="col-lg-4">
-                <center><h4><b>ARTICLE 1</b></h4></center>
-            </div>
-            <div class="col-lg-4">
-                <center><h4><b>ARTICLE 2</b></h4></center>
-            </div>
-            <div class="col-lg-4">
-                <center><h4><b>ARTICLE 3</b></h4></center>
-            </div>
-    </div>
-
-    <div class="row" style="padding-top:0px">
-      
-            <div class="col-lg-6">
-                <a class="btn btn-default" href="index.php?r=site%2Flogin" style="width:100%; background-color:grey"><h5><b>LOGIN &raquo;</b></h5></a>   
-            </div>
-            <div class="col-lg-6">
-                <a class="btn btn-default" href="index.php?r=site%2Fsignup" style="width:100%; background-color:grey"><h5><b>SIGNUP &raquo;</b></h5></a>
-            </div>
+    <br/>
+    <div class="row">
+    <div class="col-md-4" style="height:175px">
+        <center><h4 style="padding-top:5px"><b>WHAT'S NEW ?</b></h4></center>
+        <center><p>
+            The Catalogue has been updated with the latest products.<br/>
+            Now you can download the a copy of you order-receipt in form of a PDF file for future references.
+            </p>
+        </center>
     </div>
 
+    <div class="col-md-4" style="height:175px">
+        <center><h4 style="padding-top:5px"><b>WHAT'S NEXT ?</b></h4></center>
+        <center><p>
+            To make the Ordering process easier and lightening fast, our team is developing an Agnel Online App for Android, iOS and Windows Phone Users.   
+            </p>
+        </center> 
+    </div>
+            
+    <div class="col-md-4" style="height:175px">
+        <center><h4 style="padding-top:5px"><b>JOIN US...</b></h4></center>
+        <center><p>
+            <b>A</b>re you interested in Web-Development ?<br/> 
+            If yes, we would be glad to have you in our team. Drop an email to <b>harshitrai68@gmail.com</b> or else, you can also meet the Administrators during the college hours.   
+            </p></center>
     </div>
     </div>
+    <br/>
 
 </div>
 </div>
+

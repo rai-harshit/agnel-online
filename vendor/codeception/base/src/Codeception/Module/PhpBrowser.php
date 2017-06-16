@@ -51,7 +51,7 @@ use GuzzleHttp\Client as GuzzleClient;
  *                    CURLOPT_RETURNTRANSFER: true
  *                cookies:
  *                    cookie-1:
- *                        Name: roll_no
+ *                        Name: userName
  *                        Value: john.doe
  *                    cookie-2:
  *                        Name: authToken
@@ -166,9 +166,9 @@ class PhpBrowser extends InnerBrowser implements Remote, MultiSession, RequiresP
         $this->haveHttpHeader($name, $value);
     }
 
-    public function amHttpAuthenticated($roll_no, $password)
+    public function amHttpAuthenticated($username, $password)
     {
-        $this->client->setAuth($roll_no, $password);
+        $this->client->setAuth($username, $password);
     }
 
     public function amOnUrl($url)
@@ -269,7 +269,8 @@ class PhpBrowser extends InnerBrowser implements Remote, MultiSession, RequiresP
         return [
             'client' => $this->client,
             'guzzle' => $this->guzzle,
-            'crawler' => $this->crawler
+            'crawler' => $this->crawler,
+            'headers' => $this->headers,
         ];
     }
 

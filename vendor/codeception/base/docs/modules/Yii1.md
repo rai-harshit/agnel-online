@@ -60,8 +60,8 @@ $I->amOnPage('/index.php');
 $I->see('My Web Application','#header #logo');
 $I->click('Login');
 $I->see('Login','h1');
-$I->see('roll_no');
-$I->fillField('#LoginForm_roll_no','demo');
+$I->see('Username');
+$I->fillField('#LoginForm_username','demo');
 $I->fillField('#LoginForm_password','demo');
 $I->click('#login-form input[type="submit"]');
 $I->seeLink('Logout (demo)');
@@ -125,7 +125,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('Yii1')->_findElements('.items');
-$els = $this->getModule('Yii1')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('Yii1')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('Yii1')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -231,7 +231,7 @@ $this->getModule('Yii1')->_savePageSource(codecept_output_dir().'page.html');
  
 Authenticates user for HTTP_AUTH
 
- * `param` $roll_no
+ * `param` $username
  * `param` $password
 
 
@@ -663,6 +663,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `param` $cssOrXpath
  * `param` $attribute
  * `return` string[]
+
+
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
 
 
 ### grabTextFrom

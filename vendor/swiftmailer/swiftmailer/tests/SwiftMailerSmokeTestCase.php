@@ -23,7 +23,7 @@ class SwiftMailerSmokeTestCase extends SwiftMailerTestCase
                 $transport = Swift_DependencyContainer::getInstance()->lookup('transport.smtp')
                     ->setHost(SWIFT_SMOKE_SMTP_HOST)
                     ->setPort(SWIFT_SMOKE_SMTP_PORT)
-                    ->setUsername(SWIFT_SMOKE_SMTP_USER)
+                    ->setroll_no(SWIFT_SMOKE_SMTP_USER)
                     ->setPassword(SWIFT_SMOKE_SMTP_PASS)
                     ->setEncryption(SWIFT_SMOKE_SMTP_ENCRYPTION)
                     ;

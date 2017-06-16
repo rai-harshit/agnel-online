@@ -22,7 +22,7 @@ modules:
         AMQP:
             host: 'localhost'
             port: '5672'
-            roll_no: 'guest'
+            username: 'guest'
             password: 'guest'
             vhost: '/'
             queues: [queue1, queue2]

@@ -23,13 +23,13 @@ interface Swift_Transport_Esmtp_Authenticator
     public function getAuthKeyword();
 
     /**
-     * Try to authenticate the user with $username and $password.
+     * Try to authenticate the user with $roll_no and $password.
      *
      * @param Swift_Transport_SmtpAgent $agent
-     * @param string                    $username
+     * @param string                    $roll_no
      * @param string                    $password
      *
      * @return bool
      */
-    public function authenticate(Swift_Transport_SmtpAgent $agent, $username, $password);
+    public function authenticate(Swift_Transport_SmtpAgent $agent, $roll_no, $password);
 }

@@ -36,6 +36,32 @@ $I->selectOption(['model' => 'customerId'], '3');
 
 ## Actions
 
+### _findClickable
+
+*hidden API method, expected to be used from Helper classes*
+ 
+Locates a clickable element.
+
+Use it in Helpers or GroupObject or Extension classes:
+
+```php
+<?php
+$module = $this->getModule('WebDriver');
+$page = $module->webDriver;
+
+// search a link or button on a page
+$el = $module->_findClickable($page, 'Click Me');
+
+// search a link or button within an element
+$topBar = $module->_findElements('.top-bar')[0];
+$el = $module->_findClickable($topBar, 'Click Me');
+
+```
+ * `param` $page WebDriver instance or an element to search within
+ * `param` $link a link text or locator to click
+ * `return` WebDriverElement
+
+
 ### _findElements
 
 *hidden API method, expected to be used from Helper classes*
@@ -51,7 +77,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('AngularJS')->_findElements('.items');
-$els = $this->getModule('AngularJS')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('AngularJS')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('AngularJS')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -702,6 +728,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `return` string[]
 
 
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
+
+
 ### grabTextFrom
  
 Finds and returns the text contents of the given element.
@@ -728,9 +763,9 @@ If a fuzzy locator is used, the field is found by field name, CSS, and XPath.
 ``` php
 <?php
 $name = $I->grabValueFrom('Name');
-$name = $I->grabValueFrom('input[name=roll_no]');
-$name = $I->grabValueFrom('descendant-or-self::form/descendant::input[@name = 'roll_no']');
-$name = $I->grabValueFrom(['name' => 'roll_no']);
+$name = $I->grabValueFrom('input[name=username]');
+$name = $I->grabValueFrom('descendant-or-self::form/descendant::input[@name = 'username']');
+$name = $I->grabValueFrom(['name' => 'username']);
 ?>
 ```
 

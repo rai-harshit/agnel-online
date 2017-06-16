@@ -126,7 +126,7 @@ Use it in Helpers or GroupObject or Extension classes:
 ```php
 <?php
 $els = $this->getModule('Yii2')->_findElements('.items');
-$els = $this->getModule('Yii2')->_findElements(['name' => 'roll_no']);
+$els = $this->getModule('Yii2')->_findElements(['name' => 'username']);
 
 $editLinks = $this->getModule('Yii2')->_findElements(['link' => 'Edit']);
 // now you can iterate over $editLinks and check that all them have valid hrefs
@@ -232,7 +232,7 @@ $this->getModule('Yii2')->_savePageSource(codecept_output_dir().'page.html');
  
 Authenticates user for HTTP_AUTH
 
- * `param` $roll_no
+ * `param` $username
  * `param` $password
 
 
@@ -247,7 +247,7 @@ Use it for fast pragmatic authorization in functional tests.
 $I->amLoggedInAs(1);
 
 // User object is passed as parameter
-$admin = \app\models\User::findByroll_no('admin');
+$admin = \app\models\User::findByUsername('admin');
 $I->amLoggedInAs($admin);
 ```
 Requires `user` component to be enabled and configured.
@@ -772,6 +772,15 @@ $aLinks = $I->grabMultiple('a', 'href');
  * `return` string[]
 
 
+### grabPageSource
+ 
+Grabs current page source code.
+
+@throws ModuleException if no page was opened.
+
+ * `return` string Current page source code.
+
+
 ### grabRecord
  
 Retrieves record from database
@@ -843,6 +852,22 @@ $I->haveFixtures([
      ],
 ]);
 ```
+
+Note: if you need to load fixtures before the test (probably before the cleanup transaction is started;
+`cleanup` options is `true` by default), you can specify fixtures with _fixtures method of a testcase
+```php
+<?php
+// inside Cest file or Codeception\TestCase\Unit
+public function _fixtures(){
+    return [
+        'user' => [
+            'class' => UserFixture::className(),
+            'dataFile' => codecept_data_dir() . 'user.php'
+        ]
+    ];
+}
+```
+instead of defining `haveFixtures` in Cest `_before`
 
  * `param` $fixtures
  * `[Part]` fixtures

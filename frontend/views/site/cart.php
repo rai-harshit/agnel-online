@@ -71,15 +71,6 @@ $cart = Yii::$app->db->createCommand('INSERT INTO cart(dateTime,rollNo,itemId,it
         ->execute();
 
 
-/*$cart= new Cart();
-$cart->dateTime=$dateTime;
-$cart->rollNo=$rollNo;
-$cart->itemId=$itemId;
-$cart->itemName=$itemName;
-$cart->itemPrice=$itemPrice;
-$cart->save();
-*/
-    
     unset($itemId,$rollNo,$dateTime);
 
        Yii::$app->response->redirect(Url::to('index.php?r=site%2Fcatalogue'));
@@ -89,7 +80,7 @@ $cart->save();
 
 
 
-$this->title = 'My Shopping Cart';
+$this->title = 'Cart';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -99,15 +90,23 @@ $this->params['breadcrumbs'][] = $this->title;
     .glyphicon-trash{
         color:black;
     }
+    .cart{
+        background-color:#808ca0;
+        padding:15px;
+        border-radius:10px
+    }
 </style>
 </head>
 <div class="site-cart">
-    <div class="container">
+    <div class="container" style="padding-right:10px">
 
-        <center><h1><?= Html::encode($this->title) ?></h1></center><br/>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-        <div style="padding-right:10px">   
+        <div class="heading">
+        <center>
+        <h2><b><?= Html::encode($this->title) ?></b></h2>
+        </center>
+        </div>
+        <br/>
+        <div class="cart">   
                 <b>
                 <?php Pjax::begin(); ?>
                 <?= GridView::widget([
@@ -116,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'itemName',
                         'itemPrice',
                         ['class' => 'yii\grid\ActionColumn', 'template' =>
-                                        '<center><button style="font-size:25px;margin:-9px;width:55px; background-color: #118cff;padding-top:5px;border:none; color:black">{delete}</button></center>'
+                                        '<center><button style="font-size:25px;margin:-9px;width:55px; background-color:#808ca0;padding-top:5px;border:none; color:black">{delete}</button></center>'
 
                                     ],
                         ],
@@ -127,8 +126,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 </b>
         </div><br>
 
-                <div class="nav nav-pills nav-justified" style="padding-right:10px;">
-                  <li class="active" ><a href="index.php?r=site%2Forders" style=" border-radius:60px"><b>ORDER NOW</b></a></li>
+                <div class="nav nav-pills nav-justified">
+                  <li class="active" ><a href="index.php?r=site%2Forders" style=" border-radius:10px"><b>ORDER NOW</b></a></li>
                 </div>
     </div>
 </div>

@@ -25,9 +25,12 @@ $this->params['breadcrumbs'][]="Order Receipt";
 <div class="site-receipt">
 	<div class="container" style="padding-right:10px">
 
+		<div class="heading">
 		<center>
-			<h1><?php echo Html::encode("Order Receipt"); ?></h1><br/>
+			<h2><b><?php echo Html::encode("Order Receipt"); ?></b></h2>
         </center>
+        </div>
+        <br/>
 
    	        <div class="col-md-4">
 	        	<center>
@@ -85,7 +88,7 @@ $this->params['breadcrumbs'][]="Order Receipt";
 	        		}
 	        		echo "</table>";
 	        ?><br/>
-	        <div class="nav nav-pills nav-justified" style="padding-right:10px;">
+	        <div class="nav nav-pills nav-justified">
 	            <li class="active" >
 	            	<a href="
 					    <?php
@@ -94,6 +97,7 @@ $this->params['breadcrumbs'][]="Order Receipt";
 					</a>
 	            </li>
 	        </div>
+	        <br/>
 
 	</div>
 </div>

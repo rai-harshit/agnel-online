@@ -40,7 +40,11 @@ return [
             'errorAction' => 'site/error',
         ],
 
-        
+        'stripe' => [
+            'class' => 'ruskid\stripe\Stripe',
+            'publicKey' => "pk_test_GbyVsB6rZNkIDXOszWkxzvID",
+            'privateKey' => "sk_test_Pefh4NBx2YcPC2rZIxA36bDd",
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

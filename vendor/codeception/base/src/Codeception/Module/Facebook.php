@@ -267,7 +267,7 @@ EOF;
      *
      * @return string
      */
-    public function grabFacebookTestroll_no()
+    public function grabFacebookTestUserName()
     {
         if (!array_key_exists('profile', $this->testUser)) {
             $this->testUser['profile'] = $this->facebook->getTestUserInfo($this->grabFacebookTestUserAccessToken());

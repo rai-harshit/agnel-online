@@ -37,7 +37,7 @@ define('SWIFT_SMOKE_SMTP_HOST', 'localhost');
 define('SWIFT_SMOKE_SMTP_PORT', '4456');
 
 /*
- Defines: A username to authenticate with SMTP (if needed).
+ Defines: A roll_no to authenticate with SMTP (if needed).
  Recommended: (none)
  */
 define('SWIFT_SMOKE_SMTP_USER', '');

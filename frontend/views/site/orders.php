@@ -24,24 +24,33 @@ $this->params['breadcrumbs'][]=$this->title;
 
 		}
 		.col-md-6{
-			background-color: #dbdde0;
+			background-color: #808ca0;
 			border:1px solid black;
 			padding:5px;
-			font-size: 18px;
+			font-size: 15px;
 			font-weight: bold;
 			border-radius: 10px;
 			color:black;
+		}
+		.order-items{
+			background-color:#808ca0;
+        	padding:15px;
+        	border-radius:10px;
 		}
 	</style>
 </head>
 <body>
 		<div class="site-orders">
-			<div class="container">
+			<div class="container" style="padding-right: 10px">
 
-				<center><h1><?= Html::encode($this->title)  ?></h1></center><br/>
+				<div class="heading">
+					<center>
+					<h2><b><?= Html::encode($this->title)  ?></b></h2>
+					</center>
+				</div>
+				<br/>
 
-
-					<div style="padding-right: 15px;font-size:auto">
+				<div class="order-items">
 					<b>
 					<?= Gridview::widget([
 						'dataProvider'=>$dataProvider,
@@ -52,33 +61,31 @@ $this->params['breadcrumbs'][]=$this->title;
 						], 
 					]); ?>
 					</b>
-					</div>
+				</div>
+				<br/>
+				<center>
+						<div class="col-md-6">
+								<?= "PRODUCTS' COUNT : ".$itemsCount ?>
+						</div>
+						<div class="col-md-6">
+								<?= "PAYABLE AMOUNT : "?>&#x20B9;<?=$grandTotal ?>
+						</div>
 
-		<center>
-			<div class=row>
-				<div class="col-md-6">
-						<?= "PRODUCTS' COUNT : ".$itemsCount ?>
-				</div>
-				<div class="col-md-6">
-						<?= "PAYABLE AMOUNT : "?>&#x20B9;<?=$grandTotal ?>
-				</div>
+						<div class="col-md-6">
+								<?= "CURRENT WALLET BALANCE : &#x20B9;".$walletBal ?>
+						</div>
+						<div class="col-md-6">
+								<?= "BALANCE AFTER DEDUCTION: &#x20B9;$walletBal - &#x20B9;$grandTotal = &#x20B9;".($walletBal-$grandTotal)?>
+						</div>
+				</center>
 
-				<div class="col-md-6">
-						<?= "CURRENT WALLET BALANCE : &#x20B9;".$walletBal ?>
-				</div>
-				<div class="col-md-6">
-						<?= "BALANCE AFTER DEDUCTION: &#x20B9;$walletBal - &#x20B9;$grandTotal = &#x20B9;".($walletBal-$grandTotal)?>
-				</div>
-			</div>
-		</center>
-
-		<br>
+		<br/>
 		<?php
 		if(($walletBal>$grandTotal)and($itemsCount>0))
 		{
-		    echo '<div class="nav nav-pills nav-justified" style="padding-right:10px;">
-	            <li class="active" ><a href="index.php?r=site%2Fpayment-init" style=" border-radius:60px"><b>PROCEED & MAKE PAYMENT</b></a></li>
-	        </div>';
+		    echo '<div class="nav nav-pills nav-justified">
+	            <li class="active" ><a href="index.php?r=site%2Fpayment-init" style=" border-radius:10px"><b>PROCEED & MAKE PAYMENT</b></a></li>
+	        </div><br/>';
         }
         else
         {
@@ -92,9 +99,5 @@ $this->params['breadcrumbs'][]=$this->title;
         }
         ?>
 
-
-
-
 	</div>
 </div>
-</body>

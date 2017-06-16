@@ -652,8 +652,8 @@ class Stub
      *         'someMethod' => function() {}
      *     )
      * );
-     * $roll_no = $user->getName();
-     * $this->assertEquals('Davert', $roll_no);
+     * $userName = $user->getName();
+     * $this->assertEquals('Davert', $userName);
      * ?>
      * ```
      *

@@ -49,7 +49,7 @@ class LocatorTest extends PHPUnit_Framework_TestCase
 
     public function testIsId()
     {
-        $this->assertTrue(Locator::isID('#roll_no'));
+        $this->assertTrue(Locator::isID('#username'));
         $this->assertTrue(Locator::isID('#user.name'));
         $this->assertTrue(Locator::isID('#user-name'));
         $this->assertFalse(Locator::isID('#user-name .field'));
@@ -59,7 +59,7 @@ class LocatorTest extends PHPUnit_Framework_TestCase
 
     public function testIsClass()
     {
-        $this->assertTrue(Locator::isClass('.roll_no'));
+        $this->assertTrue(Locator::isClass('.username'));
         $this->assertTrue(Locator::isClass('.name'));
         $this->assertTrue(Locator::isClass('.user-name'));
         $this->assertFalse(Locator::isClass('.user-name .field'));

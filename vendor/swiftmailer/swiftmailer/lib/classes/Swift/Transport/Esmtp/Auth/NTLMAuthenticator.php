@@ -31,15 +31,15 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
     }
 
     /**
-     * Try to authenticate the user with $username and $password.
+     * Try to authenticate the user with $roll_no and $password.
      *
      * @param Swift_Transport_SmtpAgent $agent
-     * @param string                    $username
+     * @param string                    $roll_no
      * @param string                    $password
      *
      * @return bool
      */
-    public function authenticate(Swift_Transport_SmtpAgent $agent, $username, $password)
+    public function authenticate(Swift_Transport_SmtpAgent $agent, $roll_no, $password)
     {
         if (!function_exists('openssl_random_pseudo_bytes') || !function_exists('openssl_encrypt')) {
             throw new LogicException('The OpenSSL extension must be enabled to use the NTLM authenticator.');
@@ -59,7 +59,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
             $client = func_num_args() > 4 ? func_get_arg(4) : $this->getRandomBytes(8);
 
             // Message 3 response
-            $this->sendMessage3($response, $username, $password, $timestamp, $client, $agent);
+            $this->sendMessage3($response, $roll_no, $password, $timestamp, $client, $agent);
 
             return true;
         } catch (Swift_TransportException $e) {
@@ -179,7 +179,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
      * Send our final message with all our data.
      *
      * @param string                    $response  Message 1 response (message 2)
-     * @param string                    $username
+     * @param string                    $roll_no
      * @param string                    $password
      * @param string                    $timestamp
      * @param string                    $client
@@ -188,9 +188,9 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
      *
      * @return string
      */
-    protected function sendMessage3($response, $username, $password, $timestamp, $client, Swift_Transport_SmtpAgent $agent, $v2 = true)
+    protected function sendMessage3($response, $roll_no, $password, $timestamp, $client, Swift_Transport_SmtpAgent $agent, $v2 = true)
     {
-        list($domain, $username) = $this->getDomainAndUsername($username);
+        list($domain, $roll_no) = $this->getDomainAndroll_no($roll_no);
         //$challenge, $context, $targetInfoH, $targetName, $domainName, $workstation, $DNSDomainName, $DNSServerName, $blob, $ter
         list($challenge, , , , , $workstation, , , $blob) = $this->parseMessage2($response);
 
@@ -201,12 +201,12 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
             $ntlmResponse = $this->createNTLMPassword($password, $challenge);
         } else {
             // LMv2
-            $lmResponse = $this->createLMv2Password($password, $username, $domain, $challenge, $client);
+            $lmResponse = $this->createLMv2Password($password, $roll_no, $domain, $challenge, $client);
             // NTLMv2
-            $ntlmResponse = $this->createNTLMv2Hash($password, $username, $domain, $challenge, $blob, $timestamp, $client);
+            $ntlmResponse = $this->createNTLMv2Hash($password, $roll_no, $domain, $challenge, $blob, $timestamp, $client);
         }
 
-        $message = $this->createMessage3($domain, $username, $workstation, $lmResponse, $ntlmResponse);
+        $message = $this->createMessage3($domain, $roll_no, $workstation, $lmResponse, $ntlmResponse);
 
         return $agent->executeCommand(sprintf("%s\r\n", base64_encode($message)), array(235));
     }
@@ -227,19 +227,19 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
      * Create our message 3.
      *
      * @param string $domain
-     * @param string $username
+     * @param string $roll_no
      * @param string $workstation
      * @param string $lmResponse
      * @param string $ntlmResponse
      *
      * @return string
      */
-    protected function createMessage3($domain, $username, $workstation, $lmResponse, $ntlmResponse)
+    protected function createMessage3($domain, $roll_no, $workstation, $lmResponse, $ntlmResponse)
     {
         // Create security buffers
         $domainSec = $this->createSecurityBuffer($domain, 64);
         $domainInfo = $this->readSecurityBuffer(bin2hex($domainSec));
-        $userSec = $this->createSecurityBuffer($username, ($domainInfo[0] + $domainInfo[1]) / 2);
+        $userSec = $this->createSecurityBuffer($roll_no, ($domainInfo[0] + $domainInfo[1]) / 2);
         $userInfo = $this->readSecurityBuffer(bin2hex($userSec));
         $workSec = $this->createSecurityBuffer($workstation, ($userInfo[0] + $userInfo[1]) / 2);
         $workInfo = $this->readSecurityBuffer(bin2hex($workSec));
@@ -257,7 +257,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
 .$this->createByte('000000009a', 8) // session key header (empty)
 .$this->createByte('01020000') // FLAGS
 .$this->convertTo16bit($domain) // domain name
-.$this->convertTo16bit($username) // username
+.$this->convertTo16bit($roll_no) // roll_no
 .$this->convertTo16bit($workstation) // workstation
 .$lmResponse
         .$ntlmResponse;
@@ -282,15 +282,15 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
     }
 
     /**
-     * Get domain and username from our username.
+     * Get domain and roll_no from our roll_no.
      *
-     * @example DOMAIN\username
+     * @example DOMAIN\roll_no
      *
      * @param string $name
      *
      * @return array
      */
-    protected function getDomainAndUsername($name)
+    protected function getDomainAndroll_no($name)
     {
         if (strpos($name, '\\') !== false) {
             return explode('\\', $name);
@@ -366,9 +366,11 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
     protected function getCorrectTimestamp($time)
     {
         // Get our timestamp (tricky!)
+        bcscale(0);
+
         $time = number_format($time, 0, '.', ''); // save microtime to string
-        $time = bcadd($time, '11644473600000', 0); // add epoch time
-        $time = bcmul($time, 10000, 0); // tenths of a microsecond.
+        $time = bcadd($time, '11644473600000'); // add epoch time
+        $time = bcmul($time, 10000); // tenths of a microsecond.
 
         $binary = $this->si2bin($time, 64); // create 64 bit binary string
         $timestamp = '';
@@ -383,20 +385,20 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
      * Create LMv2 response.
      *
      * @param string $password
-     * @param string $username
+     * @param string $roll_no
      * @param string $domain
      * @param string $challenge NTLM Challenge
      * @param string $client    Random string
      *
      * @return string
      */
-    protected function createLMv2Password($password, $username, $domain, $challenge, $client)
+    protected function createLMv2Password($password, $roll_no, $domain, $challenge, $client)
     {
         $lmPass = '00'; // by default 00
         // if $password > 15 than we can't use this method
         if (strlen($password) <= 15) {
             $ntlmHash = $this->md4Encrypt($password);
-            $ntml2Hash = $this->md5Encrypt($ntlmHash, $this->convertTo16bit(strtoupper($username).$domain));
+            $ntml2Hash = $this->md5Encrypt($ntlmHash, $this->convertTo16bit(strtoupper($roll_no).$domain));
 
             $lmPass = bin2hex($this->md5Encrypt($ntml2Hash, $challenge.$client).$client);
         }
@@ -408,7 +410,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
      * Create NTLMv2 response.
      *
      * @param string $password
-     * @param string $username
+     * @param string $roll_no
      * @param string $domain
      * @param string $challenge  Hex values
      * @param string $targetInfo Hex values
@@ -419,10 +421,10 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
      *
      * @see http://davenport.sourceforge.net/ntlm.html#theNtlmResponse
      */
-    protected function createNTLMv2Hash($password, $username, $domain, $challenge, $targetInfo, $timestamp, $client)
+    protected function createNTLMv2Hash($password, $roll_no, $domain, $challenge, $targetInfo, $timestamp, $client)
     {
         $ntlmHash = $this->md4Encrypt($password);
-        $ntml2Hash = $this->md5Encrypt($ntlmHash, $this->convertTo16bit(strtoupper($username).$domain));
+        $ntml2Hash = $this->md5Encrypt($ntlmHash, $this->convertTo16bit(strtoupper($roll_no).$domain));
 
         // create blob
         $blob = $this->createBlob($timestamp, $client, $targetInfo);

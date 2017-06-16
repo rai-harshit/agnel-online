@@ -193,7 +193,7 @@ class Admin extends \AcceptanceTester
     {
         $I = $this;
         $I->amOnPage('/admin');
-        $I->fillField('roll_no', 'admin');
+        $I->fillField('username', 'admin');
         $I->fillField('password', '123456');
         $I->click('Login');
     }
@@ -261,7 +261,7 @@ class Login
 {
     public static $URL = '/login';
 
-    public static $roll_noField = '#mainForm #roll_no';
+    public static $usernameField = '#mainForm #username';
     public static $passwordField = '#mainForm input[name=password]';
     public static $loginButton = '#mainForm input[type=submit]';
 }
@@ -276,7 +276,7 @@ use Page\Login as LoginPage;
 $I = new AcceptanceTester($scenario);
 $I->wantTo('login to site');
 $I->amOnPage(LoginPage::$URL);
-$I->fillField(LoginPage::$roll_noField, 'bill evans');
+$I->fillField(LoginPage::$usernameField, 'bill evans');
 $I->fillField(LoginPage::$passwordField, 'debby');
 $I->click(LoginPage::$loginButton);
 $I->see('Welcome, bill');
@@ -298,7 +298,7 @@ class Login
 {
     public static $URL = '/login';
 
-    public static $roll_noField = '#mainForm #roll_no';
+    public static $usernameField = '#mainForm #username';
     public static $passwordField = '#mainForm input[name=password]';
     public static $loginButton = '#mainForm input[type=submit]';
 
@@ -317,7 +317,7 @@ class Login
         $I = $this->tester;
 
         $I->amOnPage(self::$URL);
-        $I->fillField(self::$roll_noField, $name);
+        $I->fillField(self::$usernameField, $name);
         $I->fillField(self::$passwordField, $password);
         $I->click(self::$loginButton);
 

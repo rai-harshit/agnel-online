@@ -12,8 +12,6 @@ class ComposerStaticInit57eab4d0870c082e9f88da494937fc2a
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
-        '3f8bdd3b35094c73a26f0106e3c0f8b2' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/SendGrid.php',
-        '9dda55337a76a24e949fbcc5d905a2c7' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/helpers/mail/Mail.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -28,6 +26,10 @@ class ComposerStaticInit57eab4d0870c082e9f88da494937fc2a
             'yii\\bootstrap\\' => 14,
             'yii\\authclient\\' => 15,
             'yii\\' => 4,
+        ),
+        'r' => 
+        array (
+            'ruskid\\stripe\\' => 14,
         ),
         'p' => 
         array (
@@ -56,8 +58,8 @@ class ComposerStaticInit57eab4d0870c082e9f88da494937fc2a
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
+            'Stripe\\' => 7,
             'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
-            'SendGrid\\' => 9,
         ),
         'P' => 
         array (
@@ -122,6 +124,10 @@ class ComposerStaticInit57eab4d0870c082e9f88da494937fc2a
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'ruskid\\stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ruskid/yii2-stripe',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -176,13 +182,13 @@ class ComposerStaticInit57eab4d0870c082e9f88da494937fc2a
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
         ),
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
         'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
         array (
             0 => __DIR__ . '/..' . '/stecman/symfony-console-completion/src',
-        ),
-        'SendGrid\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sendgrid/php-http-client/lib',
         ),
         'Psr\\Log\\' => 
         array (
