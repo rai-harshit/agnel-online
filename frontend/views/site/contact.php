@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <style type="text/css">
     .contact-form{
-        background-color:#808ca0;
+        background-color:#00d1bc;
         padding:15px;
         border-radius:10px;
     }    

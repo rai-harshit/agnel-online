@@ -40,7 +40,8 @@ else{
     <style type="text/css">
 
     body {
-        background-color:#dce0e8;
+        background-color:#50514f;
+        color:black;
     }
     .container {
          padding-right: 0; /*15px in bootstrap.css*/
@@ -50,9 +51,8 @@ else{
          margin-bottom:0px;
      }
     .wrap {overflow-x:auto; overflow-y:auto;}  
-
     .heading {
-        background-color:#808ca0;
+        background-color:#ff9f1c;
         padding-top:5px;
         padding-bottom:10px;
         border-radius: 10px;
@@ -75,7 +75,7 @@ else{
                     NavBar::begin([
                         'brandLabel' => '<span class="glyphicon glyphicon-education"></span> AGNEL-ONLINE &#946',
                         'brandUrl' => Yii::$app->homeUrl,
-                        'options' => ['class' => 'navbar-inverse navbar-fixed-top  navbar-left',],
+                        'options' => ['class' => 'navbar-inverse navbar-fixed-top  navbar-left'],
                                  ]);
 
                         $menuItems = [
@@ -114,10 +114,10 @@ else{
         </div>
                 
         <div class="container-fluid" style="padding-top:0px; padding-bottom: 0px; padding-left:0px;margin-top:-40px;">
-
                     <?= Breadcrumbs::widget([
                             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                        ]) ?>
+                        ])
+                    ?>
                     <?= Alert::widget() ?>    
                     <?= $content ?>
         </div>
@@ -125,7 +125,7 @@ else{
     </div>
 
     <!--Footer-->
-        <footer class="footer" style="background-color:#808ca0;">
+        <footer class="footer">
             <div class="container">
                 <p class="pull-left">&copy; AGNEL-ONLINE <?= date('Y') ?></p>
                 <p class="pull-right"><?= Yii::powered() ?></p>

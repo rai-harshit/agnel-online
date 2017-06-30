@@ -10,7 +10,7 @@ $this->title = 'AGNEL ONLINE';
     .col-md-4{
         border: 0.5px solid black;
         border-radius:10px;
-        background-color:#808ca0;
+        background-color:#00d1bc;
         padding:10px;
         padding-left: 10px;
         padding-right: 10px

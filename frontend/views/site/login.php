@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>
     .col-lg-5{
     width:100%;
-    background-color:#808ca0;
+    background-color:#2ed1c0;
     padding:15px;
     border-radius:10px
     }

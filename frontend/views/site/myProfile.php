@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][]=$this->title;
 <style>
 
 	.profile{
-		background-color:#808ca0;
+		background-color:#a01fd3;
 		padding:15px;
 		border-radius: 10px;
 		font-size:large;
@@ -74,12 +74,6 @@ $this->params['breadcrumbs'][]=$this->title;
 							$amount=100;
 					?>
 
-					<?= 
-					StripeCheckout::widget([
-						'label' => 'Add '.$amount,
-						'collectBillingAddress' => true
-					]);
-					?>
 				</div>
 
 			</div>
