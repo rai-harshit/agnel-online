@@ -11,14 +11,14 @@ $this->params['breadcrumbs'][]="Order Receipt";
 	table
 	{
 		width:100%; 
-		border:1px solid black;
+		border:1px solid black !important;
 	}
 	tr,th,td
 	{
-		border:1px solid black;
-		padding:5px;
-		padding-left: 15px;
-		width:25%;
+		border:1px solid black !important;
+		padding:5px !important;
+		padding-left: 15px !important;
+		width:25% !important;
 	}
 </style>
 </head>
@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][]="Order Receipt";
         </center>
         </div>
         <br/>
-
-   	        <div class="col-md-4">
+        	<div class = "pdfContent" style="background-color: #ff9f1c">
+   	        <div class="col-md-4" style="padding:25px;">
 	        	<center>
 	        	<img src="<?= yii\helpers\Url::to('@web/images/agnels_logo.png') ?>" align='middle'/>
 	        	</center>
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][]="Order Receipt";
 				You will have to provide the Barcode at the Counter before collecting your order.<br/>
 				You can take the Screenshot of the Barcode and also download the pdf vesion of this receipt for any future references.
 			</p>
-			<div name="barcode" align='center'>
+			<div name="barcode" align='center' style="background-color: white; padding: 10px">
 				<?php 
 					$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
 			        echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($uniqueID, $generator::TYPE_CODE_128)) . '">';
@@ -87,7 +87,9 @@ $this->params['breadcrumbs'][]="Order Receipt";
 	        			echo "<tr><td> $ordered_items[$i] </td></tr>";
 	        		}
 	        		echo "</table>";
-	        ?><br/>
+	        ?>
+	        </div>
+	       	<br/>
 	        <div class="nav nav-pills nav-justified">
 	            <li class="active" >
 	            	<a href="

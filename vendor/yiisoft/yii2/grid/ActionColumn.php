@@ -59,7 +59,7 @@ class ActionColumn extends Column
      *
      * @see buttons
      */
-    public $template = '{view} {update} {delete} {cart}';
+    public $template = '{view} {update} {delete} {cart} {details}';
     /**
      * @var array button rendering callbacks. The array keys are the button names (without curly brackets),
      * and the values are the corresponding button rendering callbacks. The callbacks should use the following
@@ -158,8 +158,14 @@ class ActionColumn extends Column
             'data-method' => 'post',
             ]);
         }
-        $this->initDefaultButton('cart', 'shopping-cart');
-
+        if(strpos($url,'site%2Fcatalogue')==true)
+        {
+            $this->initDefaultButton('cart', 'shopping-cart');
+        }
+        if(strpos($url,'site%2Fmy-profile')==true)
+        {
+            $this->initDefaultButton('details','list-alt');
+        }
     }
 
     /**
@@ -186,6 +192,8 @@ class ActionColumn extends Column
                     case 'cart':
                         $title = Yii::t('yii', 'Add To Cart');
                         break;
+                    case 'details':
+                        $title = Yii::t('yii', 'Order Details');
                     default:
                         $title = ucfirst($name);
                 }
@@ -233,7 +241,7 @@ class ActionColumn extends Column
     {
         return preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($model, $key, $index) {
             $name = $matches[1];
-
+     
             if (isset($this->visibleButtons[$name])) {
                 $isVisible = $this->visibleButtons[$name] instanceof \Closure
                     ? call_user_func($this->visibleButtons[$name], $model, $key, $index)

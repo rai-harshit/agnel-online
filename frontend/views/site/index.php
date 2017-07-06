@@ -26,11 +26,20 @@ $this->title = 'AGNEL ONLINE';
     img{
         width:100%;
     }
+
     p{  
         padding-right:10px;
         padding-left:10px;
     }
-
+    .buttons{
+        width:100%;
+        height:3em;
+        border-radius:15px;
+        color:black;
+        background-color: #ff9f1c;
+        font-size: 15px;
+        font-weight: bolder;
+    }
 </style>
 
 
@@ -71,6 +80,23 @@ $this->title = 'AGNEL ONLINE';
         </a>
         </div>
     </div>
+    
+<?php
+    if(!isset(Yii::$app->user->identity->roll_no))
+        echo 
+            '<div class="row">
+            <div class="col-md-6">
+            <div class="nav nav-pills nav-justified" style="padding-top: 10px">
+                <li class="active" ><a href="index.php?r=site%2Flogin" style=" border-radius:10px"><b>LOGIN</b></a></li>
+            </div>
+            </div>
+            <div class="col-md-6" style=" padding-bottom: 1em">
+            <div class="nav nav-pills nav-justified" style="padding-top: 10px">
+                <li class="active" ><a href="index.php?r=site%2Fsignup" style=" border-radius:10px"><b>SIGN UP</b></a></li>
+            </div>
+            </div>
+            </div>'
+?>
     <br/>
     <div class="row">
     <div class="col-md-4" style="height:175px">

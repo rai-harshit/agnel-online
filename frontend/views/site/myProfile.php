@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use ruskid\stripe\StripeCheckout;
+use yii\widgets\Pjax;
 
 $this->title='My Profile';
 $this->params['breadcrumbs'][]=$this->title;
@@ -12,16 +12,17 @@ $this->params['breadcrumbs'][]=$this->title;
 <style>
 
 	.profile{
-		background-color:#a01fd3;
+		background-color:#ff9f1c;
 		padding:15px;
 		border-radius: 10px;
 		font-size:large;
 	}
 	th,td{
-		width:50%;
 		padding:3px;
 	}
-
+	.glyphicon-list-alt{
+		color:black !important;
+	}
 
 </style>
 
@@ -44,7 +45,7 @@ $this->params['breadcrumbs'][]=$this->title;
 					<?php
 					echo    '<table style="width:100%;">
 							<tr>
-							<th>Name</th>
+							<th style="width:50%">Name</th>
 							<td>'.$userInfo['name'].'</td>
 							</tr>
 							<th>Roll No</th>
@@ -78,6 +79,22 @@ $this->params['breadcrumbs'][]=$this->title;
 
 			</div>
 		</div>
+			<div class="orderHistory" style="background-color: #ff9f1c: ">
+                    <?php Pjax::begin(); ?>    
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'columns' => [
+                            'orderNo',
+                            'grandTotal',
+                            'orderStatus',
+                            ['class' => 'yii\grid\ActionColumn', 
+                            'template' => '<center style="font-size : 20px"; padding-bottom: 20px>{details}</center>',
+                                ],
+                                ],
+                            ]); ?>
+                        <?php Pjax::end(); ?>                        
+                    </div>
 		<br/>
 	</div>
 </div>

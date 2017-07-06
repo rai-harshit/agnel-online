@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		border:1px solid black;
 	}
 	#HR,#NN,#AK{
-		background-color:#00d1bc;
+		background-color:#ff9f1c;
 		padding:1em;
 		border-radius:10px;
 	}

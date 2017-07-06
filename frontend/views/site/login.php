@@ -12,15 +12,6 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<style>
-    .col-lg-5{
-    width:100%;
-    background-color:#2ed1c0;
-    padding:15px;
-    border-radius:10px
-    }
-</style>
-
 <div class="site-login">
 <div class=container style="padding-right:10px">
 <?= Alert::widget() ?>

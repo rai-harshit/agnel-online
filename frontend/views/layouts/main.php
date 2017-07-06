@@ -40,9 +40,15 @@ else{
     <style type="text/css">
 
     body {
-        background-color:#50514f;
-        color:black;
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 80%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 80%) 8px 9px;
+        background-color:#282828;
+        background-size:16px 16px;
     }
+
     .container {
          padding-right: 0; /*15px in bootstrap.css*/
          padding-left:1em;
@@ -50,14 +56,64 @@ else{
          padding-top:0px;
          margin-bottom:0px;
      }
-    .wrap {overflow-x:auto; overflow-y:auto;}  
+
+    .wrap {overflow-x:auto; overflow-y:auto;} 
+
     .heading {
         background-color:#ff9f1c;
         padding-top:5px;
         padding-bottom:10px;
         border-radius: 10px;
         font-size:large;
+        color: black;
     }
+
+    .col-lg-5{
+    width:100%;
+    background-color:#ff9f1c;
+    padding:15px;
+    border-radius:10px
+    }
+
+    .form-control{ 
+        background:
+            radial-gradient(black 15%, transparent 16%) 0 0,
+            radial-gradient(black 15%, transparent 16%) 8px 8px,
+            radial-gradient(rgba(255,255,255,.1) 15%, transparent 80%) 0 1px,
+            radial-gradient(rgba(255,255,255,.1) 15%, transparent 80%) 8px 9px;
+            background-color:#282828;
+            background-size:16px 16px;
+        color:white;
+        font-weight: bold !important;
+        font-size: large !important;
+    } 
+
+    li > a {
+        color : #ff9f1c;
+        font-size : 16px;
+        font-weight: bold;
+    }
+
+    ul > li > a:hover {
+    color : black; 
+    background-color: #ff9f1c;
+    }
+
+    table,td,th,th>a {
+        font-weight: bold;
+        color: black !important;
+        background-color: #ff9f1c;
+        border:none !important;
+    }
+
+    th{
+        font-size: 15px;
+    }
+
+    td{
+        padding-top: 10px !important;
+    }
+
     </style>
 
 </head>

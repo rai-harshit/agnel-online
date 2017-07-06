@@ -45,6 +45,11 @@ use frontend\models\User;
 use frontend\models\UserSearch;
 //pe
 
+//os
+use frontend\models\Orderitems;
+use frontend\models\OrderitemsSearch;
+//
+
 //queriesCommand
 use yii\db\Command;
 //qCe
@@ -266,14 +271,35 @@ class SiteController extends Controller
             ->bindValue(':rollNo',$rollNo)
             ->queryScalar();
 
+        //$orderHistory=Yii::$app->db->createCommand('select [[orderNo]],[[dateTime]],[[itemsCount]],[[grandTotal]],[[uniqueID]],[[orderStatus]] from orders where rollNo=:rollNo')
+        //    ->bindValue(':rollNo',$rollNo)
+        //    ->all();
 
+        $searchModel = new OrdersSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('myProfile',[
             'userInfo'=>$userInfo,
             'currentBal'=>$currentBal,
+            'searchModel'=>$searchModel,
+            'dataProvider'=>$dataProvider
                 ]);
     }
 
+    public function actionDetails()
+    {
+        $searchModel1 = new OrdersSearch();
+        $searchModel2 = new OrderitemsSearch();
+        $dataProvider1 = $searchModel1->search(Yii::$app->request->queryParams);
+        $dataProvider2 = $searchModel2->search(Yii::$app->request->queryParams);
+        return $this->render('details', [
+              'searchModel1' => $searchModel1,
+              'searchModel2' => $searchModel2,
+              'dataProvider1' => $dataProvider1,
+              'dataProvider2' => $dataProvider2,
+              ]
+            );
+    }
 
     public function actionCatalogue()
     {

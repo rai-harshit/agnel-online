@@ -14,7 +14,6 @@ use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Writer\SvgWriter;
 use Symfony\Component\HttpFoundation\Response;
 
-
 $dataProvider1->pagination->pageParam = 'cant-reg-page';
 $dataProvider1->sort->sortParam = 'cant-reg-sort';
 
@@ -31,18 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <head>
     <style type="text/css">
-        .canteenitems-catalogue .glyphicon-shopping-cart{
+        .canteenitems-catalogue .glyphicon-shopping-cart,
+        .spcanteenitems-catalogue .glyphicon-shopping-cart,
+        .storeitems-catalogue .glyphicon-shopping-cart
+        {
             color:black !important;
         }
+
         .tab-content{
             width:100%;
-            background-color:#808ca0;
+            background-color:#ff9f1c;
             padding:15px;
             border-radius:10px;
             color:black;
         }
+        
     </style>
-
 </head>
 
 <div class="site-catalogue">
@@ -57,9 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             <ul class="nav nav-pills nav-justified" >
-                <li class="active"><a data-toggle="pill" href="#cant-reg"><b>Canteen: Regular</b></a></li>
-                <li><a data-toggle="pill" href="#cant-sp"><b>Canteen: Today's Special</b></a></li>
-                <li><a data-toggle="pill" href="#tcs"><b>The Central Store</b></a></li>
+                <li class="active" id="li-reg"><a id="reg" data-toggle="pill" href="#cant-reg"><b>Canteen: Regular</b></a></li>
+                <li id="li-sp"><a id="spe" data-toggle="pill" href="#cant-sp"><b>Canteen: Today's Special</b></a></li>
+                <li id="li-tcs"><a id="idtcs" data-toggle="pill" href="#tcs"><b>The Central Store</b></a></li>
             </ul>
             <br/>
 
@@ -75,8 +78,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'name',
                                 'price',
                                 'status',
-                                ['class' => 'yii\grid\ActionColumn', 'template' =>
-                                    '<center><button id="helo" style="font-size:25px;margin:-9px;width:55px;background-color:#808ca0;padding-top:5px;border:none;">{cart}</button></center>'
+                                ['class' => 'yii\grid\ActionColumn', 
+                                    'template' => '<center style="font-size : 20px"; padding-bottom: 20px>{cart}</center>',
 
                                 ],
 
@@ -95,11 +98,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'dataProvider' => $dataProvider2,
                                 'filterModel' => $searchModel2,
                                 'columns' => [
-
                                     'name',
                                     'price',
                                     'status',
-                                    ['class' => 'yii\grid\ActionColumn', 'template' => '<center><button style="font-size:25px;margin:-9px;width:55px;background-color:#808ca0;padding-top:5px;border:none;">{cart}</button></center>'],                                ],
+                                    ['class' => 'yii\grid\ActionColumn', 'template' => '<center style="font-size : 20px"; padding-bottom: 20px>{cart}</center>',
+                                        ],                                
+                                ],
                             ]); ?>
                         <?php Pjax::end(); ?>
                         </div>                
@@ -116,7 +120,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'name',
                                     'price',
                                     'status',
-                                    ['class' => 'yii\grid\ActionColumn', 'template' => '<center><button style="font-size:25px;margin:-9px;width:55px;background-color:#808ca0;padding-top:5px;border:none;">{cart}</button></center>'],
+                                    ['class' => 'yii\grid\ActionColumn', 'template' => '<center style="font-size : 20px"; padding-bottom: 20px>{cart}</center>',
+                                    ],
                                 ],
                             ]); ?>
                         <?php Pjax::end(); ?>                        
@@ -129,4 +134,3 @@ $this->params['breadcrumbs'][] = $this->title;
             <br/>
     </div>
 </div>
-

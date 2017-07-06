@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][]=$this->title;
 
 		}
 		.col-md-6{
-			background-color: #808ca0;
+			background-color: #ff9f1c;
 			border:1px solid black;
 			padding:5px;
 			font-size: 15px;
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][]=$this->title;
 			color:black;
 		}
 		.order-items{
-			background-color:#808ca0;
+			background-color:#ff9f1c;
         	padding:15px;
         	border-radius:10px;
 		}
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][]=$this->title;
 				<br/>
 				<center>
 						<div class="col-md-6">
-								<?= "PRODUCTS' COUNT : ".$itemsCount ?>
+								<?= "PRODUCT COUNT : ".$itemsCount ?>
 						</div>
 						<div class="col-md-6">
 								<?= "PAYABLE AMOUNT : "?>&#x20B9;<?=$grandTotal ?>

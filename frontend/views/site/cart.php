@@ -73,7 +73,7 @@ $cart = Yii::$app->db->createCommand('INSERT INTO cart(dateTime,rollNo,itemId,it
 
     unset($itemId,$rollNo,$dateTime);
 
-       Yii::$app->response->redirect(Url::to('index.php?r=site%2Fcatalogue'));
+
 
 }
 
@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
         color:black;
     }
     .cart{
-        background-color:#808ca0;
+        background-color:#ff9f1c;
         padding:15px;
         border-radius:10px
     }
@@ -115,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'itemName',
                         'itemPrice',
                         ['class' => 'yii\grid\ActionColumn', 'template' =>
-                                        '<center><button style="font-size:25px;margin:-9px;width:55px; background-color:#808ca0;padding-top:5px;border:none; color:black">{delete}</button></center>'
+                                        '<center><button style="font-size:25px;margin:-9px;width:55px; background-color:#ff9f1c;padding-top:5px;border:none; color:black">{delete}</button></center>'
 
                                     ],
                         ],
@@ -129,5 +129,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="nav nav-pills nav-justified">
                   <li class="active" ><a href="index.php?r=site%2Forders" style=" border-radius:10px"><b>ORDER NOW</b></a></li>
                 </div>
+                <br/>
     </div>
 </div>

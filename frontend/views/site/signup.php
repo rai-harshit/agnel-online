@@ -12,15 +12,6 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<style type="text/css">
-    .col-lg-5{
-    width:100%;
-    background-color:#808ca0;
-    padding:15px;
-    border-radius:10px
-    }
-</style>
-
 <div class="site-signup">
 <div class=container style="padding-right:10px">
     <div class="heading">
