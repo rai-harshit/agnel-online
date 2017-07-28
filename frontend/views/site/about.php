@@ -19,10 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	table{
 		border:2px solid black;
 		border-radius:1px;
+		width : 100%;
 	}
 	tr,th,td{
 		padding: 5px;
 		border:1px solid black;
+		width : 50%;
+		font-size: auto;
 	}
 	#HR,#NN,#AK{
 		background-color:#ff9f1c;
@@ -39,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</center>
 	</div>    
     <br/>
-
+	
     <div class="developers-info">
 	    <div id="HR" class="row">
 	    	<div class="col-md-4">
@@ -73,10 +76,26 @@ $this->params['breadcrumbs'][] = $this->title;
 			    	</tr>
 			    	<tr>
 			    		<th>
+			    			Contact
+			    		</th>
+			    		<td>
+			    			8452904404
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<th>
+			    			Email-ID
+			    		</th>
+			    		<td>
+			    			harshitrai68@gmail.com
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<th>
 			    			Role
 			    		</th>
 			    		<td>
-			    			Developer, Penetration Tester
+			    			Developer
 			    		</td>
 			    	</tr>
 			    	<tr>
@@ -84,8 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			    			Contribtions
 			    		</th>
 			    		<td>
-			    			Developer & Designer of the Website.<br/>
-			    			Penetration Tester for the website and the mobile app.
+			    			Developer & Designer<br/>
 			    		</td>
 			    	</tr>
 			    </table>
@@ -124,10 +142,26 @@ $this->params['breadcrumbs'][] = $this->title;
 			    	</tr>
 			    	<tr>
 			    		<th>
+			    			Contact
+			    		</th>
+			    		<td>
+			    			-----
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<th>
+			    			Email-ID
+			    		</th>
+			    		<td>
+			    			-----
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<th>
 			    			Role
 			    		</th>
 			    		<td>
-			    			---
+			    			Assistance in Project Development
 			    		</td>
 			    	</tr>
 			    	<tr>
@@ -135,7 +169,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			    			Contribtion
 			    		</th>
 			    		<td>
-			    			---
+			    			Data Collection, UI Designer, Project Report
 			    		</td>
 			    	</tr>
 			    </table>
@@ -173,11 +207,27 @@ $this->params['breadcrumbs'][] = $this->title;
 			    		</td>
 			    	</tr>
 			    	<tr>
+			    	<tr>
+			    		<th>
+			    			Contact
+			    		</th>
+			    		<td>
+			    			-----
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<th>
+			    			Email-ID
+			    		</th>
+			    		<td>
+			    			-----
+			    		</td>
+			    	</tr>
 			    		<th>
 			    			Role
 			    		</th>
 			    		<td>
-			    			---
+			    			Assistance in Project Development
 			    		</td>
 			    	</tr>
 			    	<tr>
@@ -185,7 +235,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			    			Contribution
 			    		</th>
 			    		<td>
-			    			---
+			    			Application Testing, UI Designer, Project Report 
 			    		</td>
 			    	</tr>
 			    </table>

@@ -25,6 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <br/>
 
         <div class="col-lg-5">
+
+            <div class="nav nav-pills" style="padding-bottom:3px">
+                    <li class="pull-right">
+                        <a id="nav-anchor" href="<?= yii\helpers\Url::to('index.php?r=site%2Ffaq#login') ?>" style=" color:white; background-color: black">HELP</a>
+                    </li>
+            </div>
             <b>
             <p>Please fill out the following fields to login:</p>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>

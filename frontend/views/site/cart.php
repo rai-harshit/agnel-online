@@ -73,7 +73,8 @@ $cart = Yii::$app->db->createCommand('INSERT INTO cart(dateTime,rollNo,itemId,it
 
     unset($itemId,$rollNo,$dateTime);
 
-
+    Url::to(['site%2Fcatalogue']);
+    return Yii::$app->response->redirect(Url::to(['catalogue']));
 
 }
 
@@ -106,7 +107,12 @@ $this->params['breadcrumbs'][] = $this->title;
         </center>
         </div>
         <br/>
-        <div class="cart">   
+        <div class="cart"> 
+            <div class="nav nav-pills" style="padding-bottom:3px">
+                    <li class="pull-right">
+                        <a id="nav-anchor" href="<?= yii\helpers\Url::to('index.php?r=site%2Ffaq#cart') ?>" style=" color:#ff9f1c; background-color: black">HELP</a>
+                    </li>
+            </div>  
                 <b>
                 <?php Pjax::begin(); ?>
                 <?= GridView::widget([

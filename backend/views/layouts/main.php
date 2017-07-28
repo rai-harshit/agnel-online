@@ -21,6 +21,15 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+    <style type="text/css">
+    body {
+        color: black !important;
+    }
+    .btn-default {
+        width:100%
+    }
+    </style>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -28,10 +37,11 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Agnel-On-Air',
+        'brandLabel' => 'Agnel-Online',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse navbar-fixed-top navbar-left',
+            'style' => 'color : black !important'
         ],
     ]);
     $menuItems = [
@@ -39,7 +49,8 @@ AppAsset::register($this);
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
+    } 
+    else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -65,7 +76,7 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer" style="background-color:#ff9f1c ">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 

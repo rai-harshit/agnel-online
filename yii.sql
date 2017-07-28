@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2017 at 11:22 PM
+-- Generation Time: Jul 15, 2017 at 04:54 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -38,7 +38,29 @@ CREATE TABLE `canteenitems` (
 --
 
 INSERT INTO `canteenitems` (`id`, `name`, `price`, `status`) VALUES
-('creg00101', 'Samosa', 12, 'Available');
+('creg00101', 'Veg Roll', 30, 'Available'),
+('creg00102', 'Chicken Roll', 30, 'Available'),
+('creg00103', 'Omlet Pav', 30, 'Available'),
+('creg00104', 'Chinese Dosa', 45, 'Available'),
+('creg00105', 'Masala Dosa', 35, 'Available'),
+('creg00106', 'Sada Dosa', 25, 'Available'),
+('creg00107', 'Sada Uttapa', 30, 'Available'),
+('creg00108', 'Onion Uttapa', 35, 'Available'),
+('creg00109', 'Tomato Uttapa', 35, 'Available'),
+('creg00110', 'Cheese Uttapa', 50, 'Available'),
+('creg00111', 'Butter Cheese Dosa', 50, 'Available'),
+('creg001117', 'Misal Pav', 35, 'Available'),
+('creg001118', 'Pav Bhaji', 40, 'Available'),
+('creg001119', 'Vada Usal/Sambar', 30, 'Available'),
+('creg00112', 'Tomato Soup', 30, 'Available'),
+('creg001120', 'Samosa Usal/Sambar', 30, 'Available'),
+('creg001121', 'Omlet', 25, 'Available'),
+('creg001122', 'Sez Chutney', 5, 'Available'),
+('creg001123', 'Tea', 12, 'Available'),
+('creg00113', 'Veg.M.Soup', 40, 'Available'),
+('creg00114', 'Veg.Clear.Soup', 35, 'Available'),
+('creg00115', 'Chicken.M.Soup', 50, 'Available'),
+('creg00116', 'Chicken.Clear.Soup', 45, 'Available');
 
 -- --------------------------------------------------------
 
@@ -93,47 +115,52 @@ CREATE TABLE `orderitems` (
 --
 
 INSERT INTO `orderitems` (`uniqueID`, `id`, `orderNo`, `ordered_item`, `prepStatus`) VALUES
-('c.41b155fd', 1, 1, 'Samosa', 'Pending'),
-('c.40a3b657', 2, 2, 'Samosa', 'Pending'),
-('c.3c0ae0ad', 3, 3, 'Samosa', 'Pending'),
-('c.3ed445d4', 4, 4, 'Samosa', 'Pending'),
-('c.3ed445d4', 5, 4, 'Hakka Noodles', 'Pending'),
-('s.4d1b46ee', 6, 5, 'Assignment Sheets', 'Pending'),
-('c.48619949', 7, 6, 'Hakka Noodles', 'Pending'),
-('c.4bfbb438', 8, 7, 'Samosa', 'Pending'),
-('c.45af7fef', 9, 8, 'Samosa', 'Pending'),
-('c.3cafdc1c', 10, 9, 'Samosa', 'Pending'),
-('s.3e639c80', 11, 10, 'Assignment Sheets', 'Pending'),
-('c.4b207dd7', 12, 11, 'Samosa', 'Pending'),
-('c.44179e0f', 13, 12, 'Samosa', 'Pending'),
-('c.f21a02cc', 14, 13, 'Samosa', 'Pending'),
-('s.35f52815', 15, 14, 'Assignment Sheets', 'Pending'),
-('c.2f6fb961', 16, 15, 'Samosa', 'Pending'),
-('c.ece27709', 17, 16, 'Samosa', 'Pending'),
-('c.3d77f1d1', 18, 17, 'Samosa', 'Pending'),
-('c.dcb07b49', 19, 18, 'Hakka Noodles', 'Pending'),
-('c.e6045bad', 20, 19, 'Samosa', 'Pending'),
-('c.db6d7405', 21, 20, 'Samosa', 'Pending'),
-('c.ed18c167', 22, 21, 'Samosa', 'Pending'),
-('c.e0685ff0', 23, 22, 'Samosa', 'Pending'),
-('c.d9d0d873', 24, 23, 'Samosa', 'Pending'),
-('c.f06a66cd', 25, 24, 'Samosa', 'Pending'),
-('c.19aa539', 26, 25, 'Samosa', 'Pending'),
-('c.113f793a', 27, 26, 'Hakka Noodles', 'Pending'),
-('c.488c24a', 28, 27, 'Samosa', 'Pending'),
-('c.d6d18a3c', 29, 28, 'Samosa', 'Pending'),
-('c.faee4e07', 30, 29, 'Samosa', 'Pending'),
-('c.186d34dc', 31, 30, 'Hakka Noodles', 'Pending'),
-('c.41d82366', 32, 31, 'Samosa', 'Pending'),
-('c.33e2eb64', 33, 32, 'Samosa', 'Pending'),
-('c.153b3ad6', 34, 33, 'Samosa', 'Pending'),
-('s.44efdfe0', 35, 34, 'Assignment Sheets', 'Pending'),
-('c.2c75d900', 36, 35, 'Samosa', 'Pending'),
-('c.23a27569', 37, 36, 'Samosa', 'Pending'),
-('c.18b3c8bb', 38, 37, 'Samosa', 'Pending'),
-('c.d8586e75', 39, 38, 'Samosa', 'Pending'),
-('s.430e7fb7', 40, 39, 'Assignment Sheets', 'Pending'),
-('c.45115a89', 41, 40, 'Samosa', 'Pending');
+('c.3dd43d09', 123, 99, 'Samosa', 'Pending'),
+('c.2ff3d4bc', 124, 100, 'Samosa', 'Pending'),
+('c.2ff3d4bc', 125, 100, 'Samosa', 'Pending'),
+('c.2ff3d4bc', 126, 100, 'Samosa', 'Pending'),
+('c.1c963470', 127, 101, 'Onion Uttapa', 'Pending'),
+('c.d99ffbec', 128, 102, 'Butter Cheese Dosa', 'Pending'),
+('c.2487622e', 129, 103, 'Veg Roll', 'Pending'),
+('c.2487622e', 130, 103, 'Chicken Roll', 'Pending'),
+('c.2487622e', 131, 103, 'Omlet Pav', 'Pending'),
+('c.2487622e', 132, 103, 'Chicken Roll', 'Pending'),
+('c.2487622e', 133, 103, 'Chinese Dosa', 'Pending'),
+('c.2487622e', 134, 103, 'Sez Chutney', 'Pending'),
+('c.1a4dad62', 135, 104, 'Chicken Roll', 'Pending'),
+('c.1a4dad62', 136, 104, 'Masala Dosa', 'Pending'),
+('c.1a4dad62', 137, 104, 'Misal Pav', 'Pending'),
+('c.1a4dad62', 138, 104, 'Vada Usal/Sambar', 'Pending'),
+('c.1a4dad62', 139, 104, 'Veg.M.Soup', 'Pending'),
+('c.d805776', 140, 105, 'Omlet Pav', 'Pending'),
+('c.d805776', 141, 105, 'Sada Uttapa', 'Pending'),
+('c.d805776', 142, 105, 'Tea', 'Pending'),
+('c.d805776', 143, 105, 'Veg.M.Soup', 'Pending'),
+('c.d805776', 144, 105, 'Chicken.Clear.Soup', 'Pending'),
+('c.fefc702', 145, 106, 'Veg Roll', 'Pending'),
+('c.32b4b3d4', 146, 107, 'Veg Roll', 'Pending'),
+('c.3f98a8bd', 147, 108, 'Chicken Roll', 'Pending'),
+('c.a728f04', 148, 109, 'Chicken Roll', 'Pending'),
+('c.e0e4568a', 149, 110, 'Veg Roll', 'Pending'),
+('s.2f9b950', 150, 111, 'ED Sheets (x1)', 'Pending'),
+('c.25bcd6db', 151, 112, 'Veg Roll', 'Pending'),
+('c.25bcd6db', 152, 112, 'Chicken Roll', 'Pending'),
+('c.14afe25e', 153, 113, 'Pasta', 'Pending'),
+('c.d4c0352f', 154, 114, 'Chicken Roll', 'Pending'),
+('c.d4c0352f', 155, 114, 'Pav Bhaji', 'Pending'),
+('c.d4c0352f', 156, 114, 'Tomato Soup', 'Pending'),
+('c.d59c158f', 157, 115, 'Onion Uttapa', 'Pending'),
+('c.d59c158f', 158, 115, 'Samosa Usal/Sambar', 'Pending'),
+('c.12a31384', 159, 116, 'Sada Dosa', 'Pending'),
+('c.12a31384', 160, 116, 'Omlet', 'Pending'),
+('c.453af9f2', 161, 117, 'Chicken Roll', 'Pending'),
+('c.453af9f2', 162, 117, 'Hakka Noodles', 'Pending'),
+('c.da49307e', 163, 118, 'Veg Roll', 'Pending'),
+('c.da49307e', 164, 118, 'Chicken Roll', 'Pending'),
+('c.1b6e525a', 165, 119, 'Sada Dosa', 'Pending'),
+('c.1b6e525a', 166, 119, 'Samosa Usal/Sambar', 'Pending'),
+('c.ea236738', 167, 120, 'Hakka Noodles', 'Pending'),
+('c.ea236738', 168, 120, 'Chinese Dosa', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -148,7 +175,7 @@ CREATE TABLE `orders` (
   `itemsCount` int(11) NOT NULL,
   `grandTotal` int(20) NOT NULL,
   `uniqueID` varchar(10) NOT NULL,
-  `orderStatus` enum('Pending','Completed') NOT NULL DEFAULT 'Pending'
+  `orderStatus` enum('Processing','Completed') NOT NULL DEFAULT 'Processing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
@@ -156,46 +183,19 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderNo`, `dateTime`, `rollNo`, `itemsCount`, `grandTotal`, `uniqueID`, `orderStatus`) VALUES
-(1, '2017-05-01 13:02:45', 501550, 1, 12, 'c.41b155', 'Pending'),
-(2, '2017-05-01 23:29:36', 501550, 1, 12, 'c.40a3b6', 'Pending'),
-(3, '2017-05-01 23:32:43', 501550, 1, 12, 'c.3c0ae0', 'Pending'),
-(4, '2017-05-01 23:33:45', 501550, 2, 92, 'c.3ed445', 'Pending'),
-(5, '2017-05-01 23:40:49', 501550, 1, 190, 's.4d1b46', 'Pending'),
-(6, '2017-05-01 23:41:51', 501550, 1, 80, 'c.486199', 'Pending'),
-(7, '2017-05-01 23:43:01', 501550, 1, 12, 'c.4bfbb4', 'Pending'),
-(8, '2017-05-01 23:43:34', 501550, 1, 12, 'c.45af7f', 'Pending'),
-(9, '2017-05-01 23:53:29', 501550, 1, 12, 'c.3cafdc', 'Pending'),
-(10, '2017-05-02 13:00:08', 501550, 1, 190, 's.3e639c', 'Pending'),
-(11, '2017-05-02 20:05:13', 501550, 1, 12, 'c.4b207d', 'Pending'),
-(12, '2017-05-02 20:42:12', 501550, 1, 12, 'c.44179e', 'Pending'),
-(13, '2017-05-02 20:42:51', 501550, 1, 12, 'c.f21a02', 'Pending'),
-(14, '2017-05-02 20:44:04', 501550, 1, 190, 's.35f528', 'Pending'),
-(15, '2017-05-02 20:45:08', 501550, 1, 12, 'c.2f6fb9', 'Pending'),
-(16, '2017-05-02 20:46:08', 501550, 1, 12, 'c.ece277', 'Pending'),
-(17, '2017-05-02 20:58:20', 501550, 1, 12, 'c.3d77f1', 'Pending'),
-(18, '2017-05-02 20:59:05', 501550, 1, 80, 'c.dcb07b', 'Pending'),
-(19, '2017-05-02 20:59:35', 501550, 1, 12, 'c.e6045b', 'Pending'),
-(20, '2017-05-02 21:00:53', 501550, 1, 12, 'c.db6d74', 'Pending'),
-(21, '2017-05-02 21:02:05', 501550, 1, 12, 'c.ed18c1', 'Pending'),
-(22, '2017-05-02 21:03:26', 501550, 1, 12, 'c.e0685f', 'Pending'),
-(23, '2017-05-02 21:05:09', 501550, 1, 12, 'c.d9d0d8', 'Pending'),
-(24, '2017-05-02 21:31:02', 501550, 1, 12, 'c.f06a66', 'Pending'),
-(25, '2017-05-02 21:31:59', 501550, 1, 12, 'c.19aa53', 'Pending'),
-(26, '2017-05-02 21:46:39', 501550, 1, 80, 'c.113f79', 'Pending'),
-(27, '2017-05-02 21:59:01', 501550, 1, 12, 'c.488c24', 'Pending'),
-(28, '2017-05-02 22:00:00', 501550, 1, 12, 'c.d6d18a', 'Pending'),
-(29, '2017-05-02 22:04:11', 501550, 1, 12, 'c.faee4e', 'Pending'),
-(30, '2017-05-02 22:04:39', 501550, 1, 80, 'c.186d34', 'Pending'),
-(31, '2017-05-02 22:10:24', 501550, 1, 12, 'c.41d823', 'Pending'),
-(32, '2017-05-02 22:10:59', 501550, 1, 12, 'c.33e2eb', 'Pending'),
-(33, '2017-05-02 22:14:57', 501550, 1, 12, 'c.153b3a', 'Pending'),
-(34, '2017-05-02 22:18:57', 501550, 1, 190, 's.44efdfe0', 'Pending'),
-(35, '2017-05-03 01:25:22', 501550, 1, 12, 'c.2c75d900', 'Pending'),
-(36, '2017-05-03 01:36:40', 501550, 1, 12, 'c.23a27569', 'Pending'),
-(37, '2017-05-03 01:49:51', 501550, 1, 12, 'c.18b3c8bb', 'Pending'),
-(38, '2017-05-03 01:54:26', 501550, 1, 12, 'c.d8586e75', 'Pending'),
-(39, '2017-05-03 02:18:01', 501550, 1, 190, 's.430e7fb7', 'Pending'),
-(40, '2017-05-03 02:22:54', 501550, 1, 12, 'c.45115a89', 'Pending');
+(107, '2017-07-14 13:43:07', 501550, 1, 30, 'c.32b4b3d4', 'Completed'),
+(108, '2017-07-14 16:14:09', 501550, 1, 30, 'c.3f98a8bd', 'Processing'),
+(109, '2017-07-14 17:15:51', 501550, 1, 30, 'c.a728f04', 'Processing'),
+(110, '2017-07-14 17:19:07', 501550, 1, 30, 'c.e0e4568a', 'Processing'),
+(111, '2017-07-15 10:59:14', 501550, 1, 10, 's.2f9b950', 'Processing'),
+(112, '2017-07-15 11:37:08', 501540, 2, 60, 'c.25bcd6db', 'Processing'),
+(113, '2017-07-15 12:05:05', 501550, 1, 35, 'c.14afe25e', 'Processing'),
+(115, '2017-07-15 13:00:49', 501550, 2, 65, 'c.d59c158f', 'Processing'),
+(116, '2017-07-15 13:18:00', 501550, 2, 50, 'c.12a31384', 'Processing'),
+(117, '2017-07-15 14:08:41', 501550, 2, 105, 'c.453af9f2', 'Processing'),
+(118, '2017-07-15 14:33:29', 501550, 2, 60, 'c.da49307e', 'Processing'),
+(119, '2017-07-15 14:38:51', 501550, 2, 55, 'c.1b6e525a', 'Processing'),
+(120, '2017-07-15 14:52:04', 501550, 2, 120, 'c.ea236738', 'Processing');
 
 -- --------------------------------------------------------
 
@@ -215,7 +215,9 @@ CREATE TABLE `spcanteenitems` (
 --
 
 INSERT INTO `spcanteenitems` (`id`, `name`, `price`, `status`) VALUES
-('cspe0010', 'Hakka Noodles', 80, 'Available');
+('cspe00101', 'Puri Bhaji', 45, 'Available'),
+('cspe00102', 'Pasta', 35, 'Available'),
+('cspe00103', 'Hakka Noodles', 75, 'Available');
 
 -- --------------------------------------------------------
 
@@ -235,7 +237,11 @@ CREATE TABLE `storeitems` (
 --
 
 INSERT INTO `storeitems` (`id`, `name`, `price`, `status`) VALUES
-('sto0010', 'Assignment Sheets', 190, 'Available');
+('csto00101', 'ED Sheets (x1)', 20, 'Available'),
+('csto00102', 'Assignment Sheets', 190, 'Available'),
+('csto00103', 'Hard-Bound Cover (x1 pair)', 11, 'Available'),
+('csto00104', 'Graph Paper (x5)', 5, 'Available'),
+('csto00105', 'Index Sheets (x5)', 5, 'Available');
 
 -- --------------------------------------------------------
 
@@ -263,8 +269,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `roll_no`, `name`, `branch`, `contact`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(2, 501550, 'Harshit Rai', 'IT', '8452904404', 'U4mEYf7Rt9vbHlX0SnzzQbUJcbeI-P_J', '$2y$13$hFszlayEtni5QkSKjw3JH.Ld1EefEA.bJ9hycReesZxpAmA5gtB0u', 'PwBNGPrymEmxzATZU0U2sRzxPvJMTvb8_1492516980', 'harshitrai68@gmail.com', 10, 1491667256, 1492516980),
-(3, 501599, 'Geralt of Rivia', 'Witcher', '0909090909', '1IeYaJXd1yfake0wXTpxCqcwvsPFl0Oo', '$2y$13$.NJ1JZW73i9ITFs4C3aePebklw3ZbCnEFXiVo5M3K4D6yGdEx83DS', NULL, 'witcher3@gmail.com', 10, 1493005718, 1493005718);
+(2, 501550, 'Harshit Rai', 'IT', '8452904404', 'U4mEYf7Rt9vbHlX0SnzzQbUJcbeI-P_J', '$2y$13$ZyEegmmLesAcxUZbblp0FePdrg81Ky6qwP41RT0toQx4f6Vvvvep.', NULL, 'harshitrai68@gmail.com', 10, 1491667256, 1500109643),
+(4, 501525, 'Azhar Khan', 'IT', '9028989869', 'Qi_MZ2Gr68KTtiO4RY7Xn-4xS2VtUgwn', '$2y$13$zYZ27/7ILTcwyycHZsOJfuO0qd4p177qgSn5mKnLttXJ9aQT7x3Za', NULL, 'khanazharj@gmail.com', 10, 1500098208, 1500098208),
+(5, 501540, 'Nathan Nunes', 'IT', '8806174079', 'Fpph8a8fsmrk_hfyd66Ao3ut-lQEpnAl', '$2y$13$R/dH4Ed6d61PF0iIdHBqq.hTpRF14SgZyCmbqK.n65tMhEcO5REWy', NULL, 'nathan-nunes@hotmail.com', 10, 1500098275, 1500098275),
+(6, 501501, 'Vineet Abr', 'IT', '1234567890', '-oxFDy02D4L7tY9R2GFn32NVfcR1x0u4', '$2y$13$AFg6Ogj8Qaz51aRwHhgbNOS..XYWpmFKd4NFiMlB0DKNBV3myelr.', NULL, 'abr123@gmail.com', 10, 1500100800, 1500100800);
 
 -- --------------------------------------------------------
 
@@ -282,8 +290,9 @@ CREATE TABLE `wallet` (
 --
 
 INSERT INTO `wallet` (`rollNo`, `balance`) VALUES
-(501550, '48498'),
-(501599, '5000');
+(501525, '10000'),
+(501540, '11940'),
+(501550, '43710');
 
 --
 -- Indexes for dumped tables
@@ -360,22 +369,22 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderNo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `orderNo` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --

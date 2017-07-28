@@ -74,7 +74,7 @@ class StripeCheckout extends \yii\base\Widget {
      * @see Stripe. The text to be shown on the default blue button.
      * @var string label
      */
-    public $label = 'Add Funds';
+    public $label = 'Boost Your Account Balance';
 
     /**
      * @see Stripe. The label of the payment button in the Checkout form (e.g. “Subscribe”, “Pay {{amount}}”, etc.).

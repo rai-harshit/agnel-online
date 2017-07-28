@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use ruskid\stripe\StripeCheckout;
+require_once('config.php');
 
 $this->title='My Profile';
 $this->params['breadcrumbs'][]=$this->title;
@@ -33,11 +35,25 @@ $this->params['breadcrumbs'][]=$this->title;
 		</div>
 		<br>
 		<div class="profile">
+		    <div class="nav nav-pills" style="padding-bottom:3px">
+                <li class="pull-right">
+                        <a id="nav-anchor" href="<?= yii\helpers\Url::to('index.php?r=site%2Ffaq#login') ?>" style=" color:white; background-color: black">HELP</a>
+                </li>
+            </div>
 			<div class="row">
 				<div class="col-md-4">
 					<center>
 					<img src="<?= yii\helpers\Url::to('@web/images/avatar.png') ?>" align='middle' />
 					<center>
+					<br/>
+				<?= 
+				StripeCheckout::widget([
+    				'action' => '/yii/frontend/web/index.php?r=site%2Fmy-profile',
+    				'amount' => 5000,
+					'collectBillingAddress' => true,
+    				'image' => "https://stripe.com/img/documentation/checkout/marketplace.png",
+					]);
+				?>
 				</div>	
 
 				<div class="col-md-8">
@@ -76,10 +92,9 @@ $this->params['breadcrumbs'][]=$this->title;
 					?>
 
 				</div>
-
 			</div>
 		</div>
-			<div class="orderHistory" style="background-color: #ff9f1c: ">
+			<div class="orderHistory" style="background-color: #ff9f1c; margin-top: 10px; padding:5px; ">
                     <?php Pjax::begin(); ?>    
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,

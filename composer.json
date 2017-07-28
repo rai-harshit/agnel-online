@@ -18,7 +18,8 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "dektrium/yii2-user": "^0.9.12"
+        "dektrium/yii2-user": "^0.9.12",
+        "stripe/stripe-php": "^5.1"
 
     },
     "require-dev": {
@@ -29,7 +30,6 @@
         "codeception/verify": "~0.3.1",
         "picqer/php-barcode-generator": "^0.2.1",
         "mpdf/mpdf": ">=6.0",
-        "stripe/stripe-php": "=4.9.1",
         "ruskid/yii2-stripe": "dev-master"
 
     },

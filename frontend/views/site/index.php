@@ -10,7 +10,7 @@ $this->title = 'AGNEL ONLINE';
     .col-md-4{
         border: 0.5px solid black;
         border-radius:10px;
-        background-color:#00d1bc;
+        background-color:#ff9f1c;
         padding:10px;
         padding-left: 10px;
         padding-right: 10px
@@ -57,7 +57,7 @@ $this->title = 'AGNEL ONLINE';
        <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="<?= yii\helpers\Url::to('@web/images/college.jpg') ?>"/>
+                <img src="<?= yii\helpers\Url::to('@web/images/college.jpg')  ?>" srcset="<?= yii\helpers\Url::to('@web/images/college.jpg')  ?>"/>
             </div>
             <div class="item">
                 <img src="<?= yii\helpers\Url::to('@web/images/canteen.jpg') ?>"/>
@@ -85,12 +85,12 @@ $this->title = 'AGNEL ONLINE';
     if(!isset(Yii::$app->user->identity->roll_no))
         echo 
             '<div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-top:10px">
             <div class="nav nav-pills nav-justified" style="padding-top: 10px">
                 <li class="active" ><a href="index.php?r=site%2Flogin" style=" border-radius:10px"><b>LOGIN</b></a></li>
             </div>
             </div>
-            <div class="col-md-6" style=" padding-bottom: 1em">
+            <div class="col-md-6" style=" padding-top: 10px">
             <div class="nav nav-pills nav-justified" style="padding-top: 10px">
                 <li class="active" ><a href="index.php?r=site%2Fsignup" style=" border-radius:10px"><b>SIGN UP</b></a></li>
             </div>
@@ -111,7 +111,7 @@ $this->title = 'AGNEL ONLINE';
     <div class="col-md-4" style="height:175px">
         <center><h4 style="padding-top:5px"><b>WHAT'S NEXT ?</b></h4></center>
         <center><p>
-            To make the Ordering process easier and lightening fast, our team is developing an Agnel Online App for Android, iOS and Windows Phone Users.   
+            To make the Ordering process easier and lightening fast, our team is developing an Agnel Online App for Android, iOS Users.   
             </p>
         </center> 
     </div>

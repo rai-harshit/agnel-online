@@ -32,15 +32,49 @@ $this->params['breadcrumbs'][] = $this->title;
     <br/>
 
     <div class="contact-form" style="padding-right: 10px">
+
+            <div class="nav nav-pills" style="padding-bottom:3px">
+                    <li class="pull-right">
+                        <a id="nav-anchor" href="<?= yii\helpers\Url::to('index.php?r=site%2Ffaq#contact_us') ?>" style=" color:#ff9f1c; background-color: black">HELP</a>
+                    </li>
+            </div>
+
         <b>
         <p>
         If you have any complaints or suggestions, feel free to write to us using the contact form below.
         </p>
-            <?php $form = ActiveForm::begin(['id' => 'contact-form']);?>
+            <?php $form = ActiveForm::begin(['id' => 'contact-form']);
+                $loggedin = isset(Yii::$app->user->identity);
+                //print_r(Yii::$app->user->identity);
+                if ($loggedin == 1 ){
+                $user_name = Yii::$app->user->identity->name;
+                //echo ($user_name);
+                $email = Yii::$app->user->identity->email;
+                //echo ($email);
+                }
+            ?>
 
-                <?= $form->field($model, 'name')->textInput(['autofocus' => true, 'bgcolor' => 'green']) ?>
+                <!--<?= $form->field($model, 'name')->textInput(['autofocus' => true, 'bgcolor' => 'green']) ?>
+-->
 
-                <?= $form->field($model, 'email') ?>
+                <?php 
+                if($loggedin == 1){
+                    echo($form->field($model, 'name')->textInput(['readonly' => TRUE ,'value' => $user_name,'style'=>'background-color:black']));
+                }
+                else{
+                    echo($form->field($model, 'name'));
+                }
+                ?>
+
+
+                <?php 
+                if($loggedin == 1){
+                    echo($form->field($model, 'email')->textInput(['readonly' => TRUE ,'value' => $email,'style'=>'background-color:black']));
+                }
+                else{
+                    echo($form->field($model, 'email'));
+                }
+                ?>
 
                 <?= $form->field($model, 'subject') ?>
 

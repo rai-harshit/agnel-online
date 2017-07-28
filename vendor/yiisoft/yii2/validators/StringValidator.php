@@ -111,6 +111,7 @@ class StringValidator extends Validator
             return;
         }
 
+
         $length = mb_strlen($value, $this->encoding);
 
         if ($this->min !== null && $length < $this->min) {
@@ -132,6 +133,7 @@ class StringValidator extends Validator
         if (!is_string($value)) {
             return [$this->message, []];
         }
+
 
         $length = mb_strlen($value, $this->encoding);
 

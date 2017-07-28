@@ -40,6 +40,7 @@ else{
     <style type="text/css">
 
     body {
+        color: black;
     background:
         radial-gradient(black 15%, transparent 16%) 0 0,
         radial-gradient(black 15%, transparent 16%) 8px 8px,
@@ -104,6 +105,7 @@ else{
         color: black !important;
         background-color: #ff9f1c;
         border:none !important;
+        width : auto;
     }
 
     th{
@@ -135,6 +137,7 @@ else{
                                  ]);
 
                         $menuItems = [
+                            ['label' => '<span class="glyphicon glyphicon-search" style="padding-right:10px"></span>FAQ', 'url' => ['/site/faq']],
                             ['label' => '<font size=4.5px>'.$orderCount.'</font> <span class="glyphicon glyphicon-shopping-cart"></span>  CART', 'url' => ['/site/cart']],
                             ['label' => 'CATALOGUE', 'url' => ['/site/catalogue']],
                             ['label' => 'CONTACT US', 'url' => ['/site/contact']],

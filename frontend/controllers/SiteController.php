@@ -287,19 +287,11 @@ class SiteController extends Controller
     }
 
     public function actionDetails()
-    {
-        $searchModel1 = new OrdersSearch();
-        $searchModel2 = new OrderitemsSearch();
-        $dataProvider1 = $searchModel1->search(Yii::$app->request->queryParams);
-        $dataProvider2 = $searchModel2->search(Yii::$app->request->queryParams);
-        return $this->render('details', [
-              'searchModel1' => $searchModel1,
-              'searchModel2' => $searchModel2,
-              'dataProvider1' => $dataProvider1,
-              'dataProvider2' => $dataProvider2,
-              ]
-            );
-    }
+    {   
+        return $this->render('details');
+    } 
+
+
 
     public function actionCatalogue()
     {
@@ -627,7 +619,10 @@ class SiteController extends Controller
     }
 
 
-
+    public function actionFaq()
+    {
+        return $this->render('faq');
+    }
 
         public function actionDelete($id)
     {

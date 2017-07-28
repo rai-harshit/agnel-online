@@ -38,11 +38,15 @@ $this->params['breadcrumbs'][] = $this->title;
         }
 
         .tab-content{
-            width:100%;
+            width:auto;
             background-color:#ff9f1c;
             padding:15px;
             border-radius:10px;
             color:black;
+        }
+        table,td,tr,th{
+            width: auto;
+            height: auto;
         }
         
     </style>
@@ -69,6 +73,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="tab-content">               
             <div id="cant-reg" class="tab-pane fade in active">
                 <div class="canteenitems-catalogue">
+
+                    <div class="nav nav-pills" style="padding-bottom:3px">
+                    <li class="pull-right">
+                        <a id="nav-anchor" href="<?= yii\helpers\Url::to('index.php?r=site%2Ffaq#signup') ?>" style=" color:#ff9f1c; background-color: black">HELP</a>
+                    </li>
+                    </div>
 
                     <?php Pjax::begin(); ?>   
                         <?= GridView::widget([
